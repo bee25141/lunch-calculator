@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/lunch-calculator:bootstrap.min.css" class="css">
+    <link rel="stylesheet" href="/assets/css/style.css" class="css">
+
+    <title>Lunch Calculator</title>
+  </head>
+  <body>
+    <div class="jumbotron">
+        <h1 class="display-3">Lunch Calculator</h1>
+        <p class="lead">Finding the 'best bang for your buck' lunch in Chicago.</p>
+      </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8 mealInput">
+                  <h2>Enter a Meal</h2>
+                  <div class="form-group">
+                    <label class="col-form-label col-form-label-lg" for="inputLarge">Restaurant</label>
+                    <input class="form-control form-control-lg restaurantInput" type="text" placeholder="Restaurant" id="inputLarge">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label col-form-label-lg" for="inputLarge">Description</label>
+                    <input class="form-control form-control-lg restaurantInput" type="text" placeholder="Enter a meal description" id="inputLarge">
+                  </div>
+                  <div class="form-group">
+                    <div class="form-group">
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control weightInput" aria-label="Amount (to the nearest dollar)">
+                        <div class="input-group-append">
+                          <span class="input-group-text">lbs</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control costInput" aria-label="Amount (to the nearest dollar)">
+                          </div>
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
+                        <div class="col-10">
+                          <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-primary submit">Submit</button>
+              </div>
+              <div class="col-2"></div>
+          </div> 
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
