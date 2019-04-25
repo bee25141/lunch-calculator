@@ -20,6 +20,7 @@ $("document").ready(function () {
     var cost = "";
     var dateTime = "";
     var meal = 0;
+    $(".statsContainer").hide();
 
     function lunchAnalysis(cost, weight){
         var analysis = cost / weight;
@@ -47,6 +48,16 @@ $("document").ready(function () {
             cost: cost,
             analysis: analysis
         })
+
+        //Hiding the input UI
+        $(".mealInput").hide();
+
+        //Populating and displaying stats
+        $("#restaurantSummary").text(restaurant);
+        $("#dateTimeSummary").text(dateTime);
+        $("#costSummary").text("$" + cost);
+        $("#analysisSummary").text("Your meal at " + restaurant + " cost " + " $" + analysis + " per pound");
+        $(".statsContainer").show();
 
 
 
