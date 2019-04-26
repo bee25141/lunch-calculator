@@ -12,6 +12,10 @@ $("document").ready(function () {
 
     var database = firebase.database();
 
+    //setting the current date and time in browser placeholder
+    var dateTimePlaceholder = new Date();
+    $("#today").innerHTML = dateTimePlaceholder;
+
 
     //setting global variables
     var restaurant = "";
@@ -24,6 +28,8 @@ $("document").ready(function () {
 
     function lunchAnalysis(cost, weight){
         var analysis = cost / weight;
+        analysis = analysis.toFixed(2);
+        console.log(analysis);
         return analysis;
     }
 
@@ -34,7 +40,9 @@ $("document").ready(function () {
         description = $(".descriptionInput").val().trim();
         weight = $(".weightInput").val().trim();
         cost = $(".costInput").val().trim();
-        dateTime = $(".dateTimeInput").val().trim();
+        dateRaw = $(".dateTimeInput").val().trim();
+        dateTime = moment(dateRaw).format('MMMM Do YYYY, h:mm a');
+        console.log(dateTime);
         meal++;
         analysis = lunchAnalysis(cost, weight);
         console.log(restaurant, description, weight, cost, dateTime, meal, analysis);
