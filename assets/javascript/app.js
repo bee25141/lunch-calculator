@@ -1,4 +1,3 @@
-$("document").ready(function () {
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAX8zHTpluy8Jeylce5rxACr6WkgNnhyhk",
@@ -55,7 +54,7 @@ $("document").ready(function () {
             weight: weight,
             cost: cost,
             analysis: analysis
-        })
+        });
 
         //Hiding the input UI
         $(".mealInput").addClass("hide");
@@ -66,7 +65,7 @@ $("document").ready(function () {
         $("#costSummary").text("$" + cost);
         $("#analysisSummary").text("Your meal at " + restaurant + " cost " + " $" + analysis + " per pound");
         $(".statsContainer").removeClass("hide");
-    })
+    });
 
     $(".back").on("click", function () {
         $(".statsContainer").addClass("hide");
@@ -77,7 +76,4 @@ $("document").ready(function () {
         $(".weightInput").val("");
         $(".costInput").val("");
         $(".dateTimeInput").val("");
-    })
-
-
-});
+    });
