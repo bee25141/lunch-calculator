@@ -24,9 +24,8 @@ $("document").ready(function () {
     var cost = "";
     var dateTime = "";
     var meal = 0;
-    $(".statsContainer").hide();
 
-    function lunchAnalysis(cost, weight){
+    function lunchAnalysis(cost, weight) {
         var analysis = cost / weight;
         analysis = analysis.toFixed(2);
         console.log(analysis);
@@ -37,20 +36,21 @@ $("document").ready(function () {
     $(".submit").on("click", function () {
         event.preventDefault();
         restaurant = $(".restaurantInput").val().trim();
+        location = $(".locationInput").val().trim();
         description = $(".descriptionInput").val().trim();
         weight = $(".weightInput").val().trim();
         cost = $(".costInput").val().trim();
         dateRaw = $(".dateTimeInput").val().trim();
         dateTime = moment(dateRaw).format('MMMM Do YYYY, h:mm a');
-        console.log(dateTime);
         meal++;
         analysis = lunchAnalysis(cost, weight);
-        console.log(restaurant, description, weight, cost, dateTime, meal, analysis);
+        console.log("click");
 
         database.ref("/Meals").push({
             meal: meal,
             dateTime: dateTime,
             restaurant: restaurant,
+            location: location,
             description: description,
             weight: weight,
             cost: cost,
@@ -58,17 +58,25 @@ $("document").ready(function () {
         })
 
         //Hiding the input UI
-        $(".mealInput").hide();
+        $(".mealInput").addClass("hide");
 
         //Populating and displaying stats
         $("#restaurantSummary").text(restaurant);
         $("#dateTimeSummary").text(dateTime);
         $("#costSummary").text("$" + cost);
         $("#analysisSummary").text("Your meal at " + restaurant + " cost " + " $" + analysis + " per pound");
-        $(".statsContainer").show();
+        $(".statsContainer").removeClass("hide");
+    })
 
-
-
+    $(".back").on("click", function () {
+        $(".statsContainer").addClass("hide");
+        $(".mealInput").removeClass("hide");
+        $(".restaurantInput").val("");
+        $(".locationInput").val("");
+        $(".descriptionInput").val("");
+        $(".weightInput").val("");
+        $(".costInput").val("");
+        $(".dateTimeInput").val("");
     })
 
 

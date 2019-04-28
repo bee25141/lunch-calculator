@@ -19,3 +19,12 @@
     background-color: #eb6864;
     text-align: center;
 }
+
+.back{
+    background-color: white;
+    color: black;
+}
+
+ .hide{
+     display: none;
+ }
