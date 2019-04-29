@@ -1,4 +1,7 @@
-    // Initialize Firebase
+//On document ready
+$(document).ready(function(){
+
+   // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAX8zHTpluy8Jeylce5rxACr6WkgNnhyhk",
         authDomain: "lunch-calculator.firebaseapp.com",
@@ -77,3 +80,5 @@
         $(".costInput").val("");
         $(".dateTimeInput").val("");
     });
+
+});
