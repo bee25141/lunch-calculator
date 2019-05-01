@@ -21,6 +21,7 @@ $(document).ready(function(){
 
     //setting global variables
     var restaurant = "";
+    var location = "";
     var description = "";
     var weight = "";
     var cost = "";
