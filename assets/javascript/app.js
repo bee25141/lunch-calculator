@@ -1,8 +1,23 @@
 //On document ready
-$(document).ready(function () {
+$(document).ready(function(){
+
+   // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAX8zHTpluy8Jeylce5rxACr6WkgNnhyhk",
+        authDomain: "lunch-calculator.firebaseapp.com",
+        databaseURL: "https://lunch-calculator.firebaseio.com",
+        projectId: "lunch-calculator",
+        storageBucket: "lunch-calculator.appspot.com",
+        messagingSenderId: "773327047733"
+    };
+    firebase.initializeApp(config);
+
+    var database = firebase.database();
+
     //setting the current date and time in browser placeholder
     var dateTimePlaceholder = new Date();
     $("#today").innerHTML = dateTimePlaceholder;
+
 
     //setting global variables
     var restaurant = "";
@@ -64,5 +79,16 @@ $(document).ready(function () {
         $(".costInput").val("");
         $(".dateTimeInput").val("");
     });
+    //Creating an array of objects for the data 
+    database.ref("/Meals").on("value", function(snapshot){
+        dataArray = [];
+        dataArray.push(snapshot.val());
+        for (i=0; i<dataArray.length; i++){
+            console.log(dataArray[i]);
+            console.log(Object.keys(dataArray[i]));
+        }
+
+
+    })
 
 });
