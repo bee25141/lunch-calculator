@@ -82,10 +82,10 @@ $(document).ready(function(){
     //Creating an array of objects for the data 
     database.ref("/Meals").on("value", function(snapshot){
         dataArray = [];
+        console.log(snapshot);
         dataArray.push(snapshot.val());
         for (i=0; i<dataArray.length; i++){
             console.log(dataArray[i]);
-            console.log(Object.keys(dataArray[i]));
         }
 
 
