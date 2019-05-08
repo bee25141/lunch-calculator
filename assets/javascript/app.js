@@ -82,11 +82,13 @@ $(document).ready(function(){
     //Creating an array of objects for the data 
     database.ref("/Meals").on("value", function(snapshot){
         dataArray = [];
-        console.log(snapshot);
-        dataArray.push(snapshot.val());
-        for (i=0; i<dataArray.length; i++){
-            console.log(dataArray[i]);
-        }
+        var dataSnap = snapshot.val();
+        dataArray.push(Object.values(dataSnap));
+        console.log(dataArray);
+        // dataArray.push(snapshot.val());
+        // for (i=0; i<dataArray.length; i++){
+        //     console.log(dataArray[i]);
+        // }
 
 
     })
