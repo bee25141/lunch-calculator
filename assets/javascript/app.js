@@ -81,10 +81,15 @@ $(document).ready(function(){
     });
     //Creating an array of objects for the data 
     database.ref("/Meals").on("value", function(snapshot){
-        dataArray = [];
+        // dataArray = [];
         var dataSnap = snapshot.val();
-        dataArray.push(Object.values(dataSnap));
-        console.log(dataArray);
+        dataSnap = (Object.values(dataSnap));
+        console.log(dataSnap);
+
+        // var chipotle = dataSnap.filter(function(restaurant){
+        //     return dataSnap.restaurant == "chipotle";
+        // })
+        // console.log(chipotle);  
         // dataArray.push(snapshot.val());
         // for (i=0; i<dataArray.length; i++){
         //     console.log(dataArray[i]);
