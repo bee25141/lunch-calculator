@@ -80,34 +80,14 @@ $(document).ready(function(){
         $(".dateTimeInput").val("");
     });
     //Creating an array of objects for the data 
-    database.ref("/Meals").on("value", function(snapshot){
-        // dataArray = [];
-        var mealData = [];
+    database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function(snapshot){
+        var chipotle = [];
         var dataSnap = snapshot.val();
         dataSnap = (Object.values(dataSnap));
-        // console.log(dataSnap);
-        for (i=0; i<dataSnap.length; i++){
-            // console.log(dataSnap[i]);
-            mealData.push(dataSnap[i]);
-            // console.log(mealData);
-            var chipotle = mealData.filter(function(restaurant){
-                return (mealData.restaurant == "chipotle");
-            })
-            console.log(chipotle);
-            // allData.filter(function(restaurant) {
-            //     debugger;
-            //     return allData.restaurant == "chipotle";
-            //     console.log(chipotle);
-            // });
-        }
+        console.log(dataSnap); 
        
-        // console.log(chipotle);  
-        // dataArray.push(snapshot.val());
-        // for (i=0; i<dataArray.length; i++){
-        //     console.log(dataArray[i]);
-        // }
 
-
+       
     })
 
 });
