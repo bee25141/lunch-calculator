@@ -82,14 +82,15 @@ $(document).ready(function () {
     //Creating an array of objects for the data 
     let analysisArray = [];
     database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function (snapshot) {
+        var restaurant = "chipotle";
         let dataSnap = snapshot.val();
         dataSnap = (Object.values(dataSnap));
         for(i=0;i<dataSnap.length; i++){
             let dataSumArray = [(dataSnap[i].analysis)];
-            // console.log(dataSumArray)
-            let dataSum = dataSumArray.reduce(function(a,b){return a + b;},0) / (dataSumArray.length);
-            console.log(dataSum);
+            var dataSum = dataSumArray.reduce(function(a,b){return a + b;},0) / (dataSumArray.length);
         }
+        var restaurantAnalysis = {[restaurant]: dataSum};
+        analysisArray.push(restaurantAnalysis);
     })
     console.log(analysisArray);
     function barGraphDisplay() {
