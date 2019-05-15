@@ -28,3 +28,12 @@
  .hide{
      display: none;
  }
+
+  .bar-chart {
+    background-color: #299fd6;
+
+}
+
+rect{
+    color: #767676;
+}

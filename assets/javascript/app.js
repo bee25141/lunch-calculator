@@ -1,7 +1,7 @@
 //On document ready
-$(document).ready(function(){
+$(document).ready(function () {
 
-   // Initialize Firebase
+    // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAX8zHTpluy8Jeylce5rxACr6WkgNnhyhk",
         authDomain: "lunch-calculator.firebaseapp.com",
@@ -80,14 +80,63 @@ $(document).ready(function(){
         $(".dateTimeInput").val("");
     });
     //Creating an array of objects for the data 
-    database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function(snapshot){
-        var chipotle = [];
-        var dataSnap = snapshot.val();
+    let analysisArray = [];
+    database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function (snapshot) {
+        let dataSnap = snapshot.val();
         dataSnap = (Object.values(dataSnap));
-        console.log(dataSnap); 
-       
-
-       
+        for(i=0;i<dataSnap.length; i++){
+            let dataSumArray = [(dataSnap[i].analysis)];
+            // console.log(dataSumArray)
+            let dataSum = dataSumArray.reduce(function(a,b){return a + b;},0) / (dataSumArray.length);
+            console.log(dataSum);
+        }
     })
+    console.log(analysisArray);
+    function barGraphDisplay() {
+        d3.select(".barGraph").select("svg").remove();
+        var dataset = chipotle;
+        var svgWidth = 900;
+        var svgHeight = 250;
+        var barPadding = 5;
+        var barWidth = (svgWidth / dataset.length);
+        var svg = d3.select('.barGraph').append("svg").attr("width", svgWidth).attr("height", svgHeight).attr("class", "bar-chart");
+
+        var yScale = d3.scaleLinear()
+            .domain([0, d3.max(dataset)])
+            .range([0, svgHeight]);
+
+        var barChart = svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("y", function (d) {
+                return svgHeight - yScale(d) + 10;
+            })
+            .attr("height", function (d) {
+                return yScale(d);
+            })
+            .attr("fill", "#282828")
+            .attr("width", barWidth - barPadding)
+            .attr("transform", function (d, i) {
+                var translate = [barWidth * i, 0];
+                return "translate(" + translate + ")";
+            });
+
+        var text = svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function (d, i) {
+                return d;
+            })
+            .attr("y", function (d, i) {
+                return svgHeight - d - 2;
+            })
+            .attr("x", function (d, i) {
+                return barWidth * i;
+            })
+            .attr("fill", "white");
+    };
+    barGraphDisplay();
 
 });
