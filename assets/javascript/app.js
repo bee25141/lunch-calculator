@@ -79,11 +79,11 @@ $(document).ready(function () {
         $(".costInput").val("");
         $(".dateTimeInput").val("");
     });
-    //Creating an array of objects for the data 
-    let analysisArray = [];
-    database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function (snapshot) {
-        var restaurant = "chipotle";
-        let dataSnap = snapshot.val();
+
+    //Function for getting the average cost per pound at each restaurant
+    function getAnalysis(restaurant, data){
+        var restaurant = restaurant;
+        let dataSnap = data;
         dataSnap = (Object.values(dataSnap));
         for(i=0;i<dataSnap.length; i++){
             let dataSumArray = [(dataSnap[i].analysis)];
@@ -91,6 +91,11 @@ $(document).ready(function () {
         }
         var restaurantAnalysis = {[restaurant]: dataSum};
         analysisArray.push(restaurantAnalysis);
+    }
+    //Creating an array of objects for the data 
+    let analysisArray = [];
+    database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function (snapshot) {
+        getAnalysis("chipotle", snapshot.val());
     })
     console.log(analysisArray);
     function barGraphDisplay() {
