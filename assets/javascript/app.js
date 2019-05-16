@@ -1,6 +1,5 @@
 //On document ready
 $(document).ready(function () {
-
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAX8zHTpluy8Jeylce5rxACr6WkgNnhyhk",
@@ -27,6 +26,7 @@ $(document).ready(function () {
     var cost = "";
     var dateTime = "";
     var meal = 0;
+    var analysisArray = [];
 
     function lunchAnalysis(cost, weight) {
         var analysis = cost / weight;
@@ -81,38 +81,54 @@ $(document).ready(function () {
     });
 
     //Function for getting the average cost per pound at each restaurant
-    function getAnalysis(restaurant, data){
+    function getAnalysis(restaurant, data) {
         var restaurant = restaurant;
         let dataSnap = data;
         dataSnap = (Object.values(dataSnap));
-        for(i=0;i<dataSnap.length; i++){
+        for (i = 0; i < dataSnap.length; i++) {
             let dataSumArray = [(dataSnap[i].analysis)];
-            var dataSum = dataSumArray.reduce(function(a,b){return a + b;},0) / (dataSumArray.length);
+            var dataSum = dataSumArray.reduce(function (a, b) {
+                return a + b;
+            }, 0) / (dataSumArray.length);
         }
-        var restaurantAnalysis = {[restaurant]: dataSum};
+        var restaurantAnalysis = {
+            [restaurant]: dataSum
+        };
         analysisArray.push(restaurantAnalysis);
     }
-    //Creating an array of objects for the data 
-    let analysisArray = [];
-    database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function (snapshot) {
-        getAnalysis("chipotle", snapshot.val());
-    })
-    console.log(analysisArray);
+
+    //Pulling data from respective restaurants
+    function restaurantData() {
+        database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function (snapshot) {
+            getAnalysis("chipotle", snapshot.val());
+        })
+        database.ref("/Meals").orderByChild("restaurant").equalTo("corner bakery cafe").on("value", function (snapshot) {
+            getAnalysis("corner bakery cafe", snapshot.val());
+        })
+        database.ref("/Meals").orderByChild("restaurant").equalTo("roti modern mediterranean").on("value", function (snapshot) {
+            getAnalysis("roti modern mediterranean", snapshot.val());
+        })
+        //  notificationService.postNotification('RESTAURANT_DATA_DOWNLOADED', null);
+    }
+    var sampleData = [27, 68, 69];
+    //Function for displaying D3 bargraph
     function barGraphDisplay() {
-        d3.select(".barGraph").select("svg").remove();
-        var dataset = chipotle;
+        d3.select("#barGraph").select("svg").remove();
+        console.log(analysisArray);
+        var dataset = d3.entries(analysisArray);
         var svgWidth = 900;
         var svgHeight = 250;
         var barPadding = 5;
         var barWidth = (svgWidth / dataset.length);
-        var svg = d3.select('.barGraph').append("svg").attr("width", svgWidth).attr("height", svgHeight).attr("class", "bar-chart");
+        var svg = d3.select('#barGraph').append("svg").attr("width", svgWidth).attr("height", svgHeight).attr("class", "bar-chart");
 
-        var yScale = d3.scaleLinear()
+        var yScale = d3.scaleLinear() 
             .domain([0, d3.max(dataset)])
             .range([0, svgHeight]);
 
         var barChart = svg.selectAll("rect")
             .data(dataset)
+            console.log(dataset)
             .enter()
             .append("rect")
             .attr("y", function (d) {
@@ -143,6 +159,6 @@ $(document).ready(function () {
             })
             .attr("fill", "white");
     };
+    restaurantData();
     barGraphDisplay();
-
 });
