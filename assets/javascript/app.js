@@ -117,57 +117,6 @@ $(document).ready(function () {
     };
 
     console.log(analysisArray);
-    const sample = [{
-            language: 'Rust',
-            value: 78.9,
-            color: '#000000'
-        },
-        {
-            language: 'Kotlin',
-            value: 75.1,
-            color: '#00a2ee'
-        },
-        {
-            language: 'Python',
-            value: 68.0,
-            color: '#fbcb39'
-        },
-        {
-            language: 'TypeScript',
-            value: 67.0,
-            color: '#007bc8'
-        },
-        {
-            language: 'Go',
-            value: 65.6,
-            color: '#65cedb'
-        },
-        {
-            language: 'Swift',
-            value: 65.1,
-            color: '#ff6e52'
-        },
-        {
-            language: 'JavaScript',
-            value: 61.9,
-            color: '#f9de3f'
-        },
-        {
-            language: 'C#',
-            value: 60.4,
-            color: '#5d2f8e'
-        },
-        {
-            language: 'F#',
-            value: 59.6,
-            color: '#008fc9'
-        },
-        {
-            language: 'Clojure',
-            value: 59.6,
-            color: '#507dca'
-        }
-    ];
     //Function for displaying D3 bargraph
     function barGraphDisplay() {
 
@@ -284,36 +233,36 @@ $(document).ready(function () {
         //     chart.selectAll('.divergence').remove()
         // })
 
-        // barGroups
-        //     .append('text')
-        //     .attr('class', 'value')
-        //     .attr('x', (a) => xScale(a.restaurant) + xScale.bandwidth() / 2)
-        //     .attr('y', (a) => yScale(a.value) + 30)
-        //     .attr('text-anchor', 'middle')
-        //     .text((a) => `${a.value}%`)
+        barGroups
+            .append('text')
+            .attr('class', 'value')
+            .attr('x', (a) => xScale(a.restaurant) + xScale.bandwidth() / 2)
+            .attr('y', (a) => yScale(a.value) + 30)
+            .attr('text-anchor', 'middle')
+            .text((a) => `$${a.value}`)
 
-        // svg
-        //     .append('text')
-        //     .attr('class', 'label')
-        //     .attr('x', -(height / 2) - margin)
-        //     .attr('y', margin / 2.4)
-        //     .attr('transform', 'rotate(-90)')
-        //     .attr('text-anchor', 'middle')
-        //     .text('Love meter (%)')
+        svg
+            .append('text')
+            .attr('class', 'label')
+            .attr('x', -(height / 2) - margin)
+            .attr('y', margin / 2.4)
+            .attr('transform', 'rotate(-90)')
+            .attr('text-anchor', 'middle')
+            .text('$ / Pound')
 
-        // svg.append('text')
-        //     .attr('class', 'label')
-        //     .attr('x', width / 2 + margin)
-        //     .attr('y', height + margin * 1.7)
-        //     .attr('text-anchor', 'middle')
-        //     .text('Languages')
+        svg.append('text')
+            .attr('class', 'label')
+            .attr('x', width / 2 + margin)
+            .attr('y', height + margin * 1.7)
+            .attr('text-anchor', 'middle')
+            .text('Restaurants')
 
-        // svg.append('text')
-        //     .attr('class', 'title')
-        //     .attr('x', width / 2 + margin)
-        //     .attr('y', 40)
-        //     .attr('text-anchor', 'middle')
-        //     .text('Most loved programming languages in 2018')
+        svg.append('text')
+            .attr('class', 'title')
+            .attr('x', width / 2 + margin)
+            .attr('y', 40)
+            .attr('text-anchor', 'middle')
+            .text('Average Meal Cost Per Pound')
 
         // svg.append('text')
         //     .attr('class', 'source')

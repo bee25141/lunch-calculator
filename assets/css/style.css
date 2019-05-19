@@ -1,3 +1,7 @@
+.navbar-dark{
+    background-color: #eb6864;
+}
+
 .jumbotron{
     background-color: #eb6864;
     /* text-align: center; */
@@ -33,7 +37,7 @@
     width: 1000px;
     height: 600px;
     margin: auto;
-    background-color: #2F4A6D;
+    background-color: #eb6864;
   }
   
   svg {
@@ -42,5 +46,5 @@
   }
   
   .bar {
-    fill: #80cbc4;
+    fill: white;
   }
