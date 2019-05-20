@@ -10,13 +10,11 @@ $(document).ready(function () {
         messagingSenderId: "773327047733"
     };
     firebase.initializeApp(config);
-
     var database = firebase.database();
 
     //setting the current date and time in browser placeholder
     var dateTimePlaceholder = new Date();
     $("#today").innerHTML = dateTimePlaceholder;
-
 
     //setting global variables
     var restaurant = "";
