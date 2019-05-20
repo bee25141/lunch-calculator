@@ -1,7 +1,3 @@
-.navbar-dark{
-    background-color: #eb6864;
-}
-
 .jumbotron{
     background-color: #eb6864;
     /* text-align: center; */
@@ -75,5 +71,5 @@
   }
   
   .bar {
-    fill: white;
+    fill: #037bff;
   }

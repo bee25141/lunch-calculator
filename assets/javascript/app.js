@@ -26,6 +26,15 @@ $(document).ready(function () {
     var meal = 0;
     var analysisArray = [];
 
+    //Validation for meal input completion
+    function validateTextBox() {
+        let restaurantInput = document.getElementsByClassName("restaurantInput");
+        if (restaurantInput == "") {
+            console.log("input stopped");
+            return false;
+        }
+    }
+
     function lunchAnalysis(cost, weight) {
         var analysis = cost / weight;
         analysis = analysis.toFixed(2);
@@ -109,8 +118,8 @@ $(document).ready(function () {
             barGraphCallback();
         });
 
-    
-        
+
+
         //  notificationService.postNotification('RESTAURANT_DATA_DOWNLOADED', null);
     };
 
@@ -260,7 +269,7 @@ $(document).ready(function () {
             .attr('x', width / 2 + margin)
             .attr('y', 40)
             .attr('text-anchor', 'middle')
-            .text('Average Meal Cost Per Pound')
+            .text('Average Cost of Meal Per Pound')
 
         // svg.append('text')
         //     .attr('class', 'source')
