@@ -107,20 +107,53 @@ $(document).ready(function () {
 
     //Pulling data from respective restaurants
     function restaurantData(barGraphCallback) {
+        database.ref("/Meals").orderByChild("restaurant").equalTo("beatrix").on("value", function (snapshot) {
+            getAnalysis("beatrix", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("brown bag seafood co.").on("value", function (snapshot) {
+            getAnalysis("brown bag seafood co.", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("cafecito").on("value", function (snapshot) {
+            getAnalysis("cafecito", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("capriotti's sandwich shop").on("value", function (snapshot) {
+            getAnalysis("capriotti's sandwich shop", snapshot.val());
+        });
         database.ref("/Meals").orderByChild("restaurant").equalTo("chipotle").on("value", function (snapshot) {
             getAnalysis("chipotle", snapshot.val());
         });
         database.ref("/Meals").orderByChild("restaurant").equalTo("corner bakery cafe").on("value", function (snapshot) {
             getAnalysis("corner bakery cafe", snapshot.val());
         });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("jersey mike's subs").on("value", function (snapshot) {
+            getAnalysis("jersey mike's subs", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("jimmy john's").on("value", function (snapshot) {
+            getAnalysis("jimmy john's", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("luke's lobster").on("value", function (snapshot) {
+            getAnalysis("luke's lobster", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("nando's peri-peri").on("value", function (snapshot) {
+            getAnalysis("nando's peri-peri", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("nesh mediterranean grill").on("value", function (snapshot) {
+            getAnalysis("nesh mediterranean grill", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("pierogi heaven").on("value", function (snapshot) {
+            getAnalysis("pierogi heaven", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("subway").on("value", function (snapshot) {
+            getAnalysis("subway", snapshot.val());
+        });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("taco burrito king").on("value", function (snapshot) {
+            getAnalysis("taco burrito king", snapshot.val());
+        });
         database.ref("/Meals").orderByChild("restaurant").equalTo("roti modern mediterranean").on("value", function (snapshot) {
             getAnalysis("roti modern mediterranean", snapshot.val());
             barGraphCallback();
         });
 
-
-
-        //  notificationService.postNotification('RESTAURANT_DATA_DOWNLOADED', null);
     };
 
     console.log(analysisArray);
@@ -192,12 +225,12 @@ $(document).ready(function () {
         //     d3.selectAll('.value')
         //         .attr('opacity', 0)
 
-        //     d3.select(this)
-        //         .transition()
-        //         .duration(300)
-        //         .attr('opacity', 0.6)
-        //         .attr('x', (a) => xScale(a.language) - 5)
-        //         .attr('width', xScale.bandwidth() + 10)
+        // d3.select(this)
+        //     .transition()
+        //     .duration(300)
+        //     .attr('opacity', 0.6)
+        //     .attr('x', (a) => xScale(a.language) - 5)
+        //     .attr('width', xScale.bandwidth() + 10)
 
         //     const y = yScale(actual.value)
 
