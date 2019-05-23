@@ -25,6 +25,7 @@ $(document).ready(function () {
     var dateTime = "";
     var meal = 0;
     var analysisArray = [];
+    var dataSet = parseInt("");
 
     //Validation for meal input completion
     function validateTextBox() {
@@ -156,12 +157,16 @@ $(document).ready(function () {
 
     };
 
-    console.log(analysisArray);
+    // console.log(analysisArray);
     //Function for displaying D3 bargraph
     function barGraphDisplay() {
 
         const svg = d3.select('svg');
         const svgContainer = d3.select('#container');
+        for (i=0; i<analysisArray.length; i++){
+            var dataSet = analysisArray[i].value;
+        };
+        console.log(dataSet);
 
         const margin = 50;
         const width = 1000 - 2 * margin;
@@ -177,7 +182,7 @@ $(document).ready(function () {
 
         const yScale = d3.scaleLinear()
             .range([height, 0])
-            .domain([0, 10]);
+            .domain([0, d3.max(dataSet)])
 
         // vertical grid lines
         // const makeXLines = () => d3.axisBottom()
@@ -196,19 +201,19 @@ $(document).ready(function () {
         // vertical grid lines
         // chart.append('g')
         //   .attr('class', 'grid')
-        //   .attr('transform', `translate(0, ${height})`)
+        //   .attr('transform', `translate(0, ${heigcoht})`)
         //   .call(makeXLines()
         //     .tickSize(-height, 0, 0)
         //     .tickFormat('')
         //   )
-
+ 
         chart.append('g')
             .attr('class', 'grid')
             .call(makeYLines()
                 .tickSize(-width, 0, 0)
                 .tickFormat('')
             )
-        console.log(analysisArray.length)
+        // console.log(analysisArray.length)
         const barGroups = chart.selectAll()
             .data(analysisArray)
             .enter()
