@@ -182,7 +182,7 @@ $(document).ready(function () {
 
         const yScale = d3.scaleLinear()
             .range([height, 0])
-            .domain([0, d3.max(dataSet)])
+            .domain([0, 40])
 
         // vertical grid lines
         // const makeXLines = () => d3.axisBottom()
