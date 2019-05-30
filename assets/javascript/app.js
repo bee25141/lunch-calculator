@@ -141,6 +141,9 @@ $(document).ready(function () {
         database.ref("/Meals").orderByChild("restaurant").equalTo("nesh mediterranean grill").on("value", function (snapshot) {
             getAnalysis("nesh mediterranean grill", snapshot.val());
         });
+        database.ref("/Meals").orderByChild("restaurant").equalTo("panera bread").on("value", function (snapshot) {
+            getAnalysis("panera bread", snapshot.val());
+        });
         database.ref("/Meals").orderByChild("restaurant").equalTo("pierogi heaven").on("value", function (snapshot) {
             getAnalysis("pierogi heaven", snapshot.val());
         });
