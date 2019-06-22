@@ -1,4 +1,4 @@
-//Requiring NPM MySQL package
+//Requires NPM MySQL package
 const mysql = require("mysql");
 
 //Establishing connection to the database
