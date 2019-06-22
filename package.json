@@ -1,0 +1,24 @@
+{
+  "name": "lunch-calculator",
+  "version": "1.0.0",
+  "description": "There's nothing worse than paying $15.00 for lunch in Chicago and being hungry two hours later. The lunch calculator is an ongoing project to find the best bargain on lunch. Users input the restaurant, meal description, weight, and cost of the meal; the data is stored in the Firebase database and users are returned an analysis of the cost per pound of their meal. I'm going to use the data to generate data visualizations of the best bargain lunch spots in Chicago.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bee25141/lunch-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bee25141/lunch-calculator/issues"
+  },
+  "homepage": "https://github.com/bee25141/lunch-calculator#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  }
+}
