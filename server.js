@@ -23,7 +23,7 @@ app.set("view engine", "handlebars");
 //Importing routes and giving server access to said routes
 const routes = require("./controllers/lunch_controller");
 
-// app.use(routes);
+app.use(routes);
 
 //Starting server
 app.listen(PORT, function () {
