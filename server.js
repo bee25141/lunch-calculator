@@ -12,13 +12,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-//Requires Handlebars
-const exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({
-    defaultLayout: "main"
-}));
-app.set("view engine", "handlebars");
+app.set("view engine", "ejs");
 
 //Importing routes and giving server access to said routes
 const routes = require("./controllers/lunch_controller");
