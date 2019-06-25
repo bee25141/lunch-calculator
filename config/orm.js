@@ -38,9 +38,10 @@ let orm = {
     },
     delete: function (queryObject, callback) {
         let queryString = 'DELETE FROM ?? WHERE ?? = ?';
-        connection.query(queryString, , function (err, result) {
+        let searchCriteria = [queryObject.table, queryObject.row, queryObject.id];
+        connection.query(queryString, searchCriteria, function (err, result) {
             if (err) throw err;
             callback(result)
         });
     }
-}
+};
