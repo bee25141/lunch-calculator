@@ -1,17 +1,5 @@
 //On document ready
 $(document).ready(function () {
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAX8zHTpluy8Jeylce5rxACr6WkgNnhyhk",
-        authDomain: "lunch-calculator.firebaseapp.com",
-        databaseURL: "https://lunch-calculator.firebaseio.com",
-        projectId: "lunch-calculator",
-        storageBucket: "lunch-calculator.appspot.com",
-        messagingSenderId: "773327047733"
-    };
-    firebase.initializeApp(config);
-    var database = firebase.database();
-
     //setting the current date and time in browser placeholder
     var dateTimePlaceholder = new Date();
     $("#today").innerHTML = dateTimePlaceholder;
@@ -27,15 +15,6 @@ $(document).ready(function () {
     var analysisArray = [];
     var dataSet = parseInt("");
 
-    //Validation for meal input completion
-    function validateTextBox() {
-        let restaurantInput = document.getElementsByClassName("restaurantInput");
-        if (restaurantInput == "") {
-            console.log("input stopped");
-            return false;
-        }
-    }
-
     function lunchAnalysis(cost, weight) {
         var analysis = cost / weight;
         analysis = analysis.toFixed(2);
@@ -45,27 +24,32 @@ $(document).ready(function () {
     //Inputting meal stats
     $(".submit").on("click", function () {
         event.preventDefault();
-        restaurant = $(".restaurantInput").val().trim().toLowerCase();
-        location = $(".locationInput").val().trim().toLowerCase();
-        description = $(".descriptionInput").val().trim().toLowerCase();
-        weight = $(".weightInput").val().trim();
-        cost = $(".costInput").val().trim();
-        dateRaw = $(".dateTimeInput").val().trim();
-        dateTime = moment(dateRaw).format('MMMM Do YYYY, h:mm a');
-        meal++;
-        analysis = lunchAnalysis(cost, weight);
 
-        database.ref("/Meals").push({
-            meal: meal,
-            dateTime: dateTime,
-            restaurant: restaurant,
-            location: location,
-            description: description,
-            weight: weight,
-            cost: cost,
-            analysis: analysis
-        });
+        // Form validation for inputs
+        let validateForm = function () {
+            var isValid = true;
+            $(".form-control").each(function () {
+                if ($(this).val() === "") {
+                    isValid = false;
+                }
+            });
+            return isValid;
+        };
 
+        let newData = {
+        restaurant: $(".restaurantInput").val().trim().toLowerCase(),
+        location: $(".locationInput").val().trim().toLowerCase(),
+        description: $(".descriptionInput").val().trim().toLowerCase(),
+        weight: $(".weightInput").val().trim(),
+        cost: $(".costInput").val().trim(),
+        dateRaw: $(".dateTimeInput").val().trim(),
+        dateTime: moment(dateRaw).format('MMMM Do YYYY, h:mm a'),
+        analysis: lunchAnalysis(cost, weight)
+        };
+        
+        $.post("/api/friends", newData, function(request, response {
+            
+        })
         //Hiding the input UI
         $(".mealInput").addClass("hide");
 
