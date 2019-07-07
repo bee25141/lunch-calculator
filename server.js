@@ -13,12 +13,13 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 
-app.set("view engine", "ejs");
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 //Importing routes and giving server access to said routes
-const routes = require("./controllers/lunch_controller");
-
-app.use(routes);
+require('./routes')(app);
 
 //Starting server
 app.listen(PORT, function () {

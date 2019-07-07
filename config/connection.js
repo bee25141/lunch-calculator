@@ -10,9 +10,13 @@ let connection = mysql.createConnection({
     database: "lunch_box_chi"
 });
 
-connection.connect(function(err){
-    if (err) throw err;
-    console.log("connected as ID: " + connection.threadId);
-});
+// Make connection.
+connection.connect(function (err) {
+    if (err) {
+      console.error("error connecting: " + err.stack);
+      return;
+    }
+    console.log("connected as id " + connection.threadId);
+  });
 
 module.exports = connection;
