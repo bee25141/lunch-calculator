@@ -14,7 +14,6 @@ app.get("/analysis", (request, response) => {
 
 //Routes for API calls
 app.post("/api/lunch", (request, response) => {
-    console.log("hit");
     user.insertNewLunch(request, response);
-})
+});
 };
