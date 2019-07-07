@@ -10,8 +10,8 @@ $(document).ready(function () {
             var description = "";
             var weight = "";
             var cost = "";
+            var dateRaw = "";
             var dateTime = "";
-            var meal = 0;
             var analysisArray = [];
             var dataSet = parseInt("");
 
@@ -37,7 +37,6 @@ $(document).ready(function () {
                     };
 
                     if (validateForm()) {
-                        console.log("true");
                     let newData = {
                         restaurant: $(".restaurantInput").val().trim().toLowerCase(),
                         location: $(".locationInput").val().trim().toLowerCase(),
@@ -50,10 +49,12 @@ $(document).ready(function () {
                     };
 
                         //Hiding the input UI
-                        $(".mealInput").addClass("hide");
+                        // $(".mealInput").addClass("hide");
 
                         //Populating and displaying stats
-                        $("#restaurantSummary").text(restaurant); $("#dateTimeSummary").text(dateTime); $("#costSummary").text("$" + cost); $("#analysisSummary").text("Your meal at " + restaurant + " cost " + " $" + analysis + " per pound"); $(".statsContainer").removeClass("hide");
+                        // $("#restaurantSummary").text(restaurant); $("#dateTimeSummary").text(dateTime); $("#costSummary").text("$" + cost); $("#analysisSummary").text("Your meal at " + restaurant + " cost " + " $" + analysis + " per pound"); $(".statsContainer").removeClass("hide");
+
+                        $.post("/api/lunch", newData);
                 }
 
                 $(".back").on("click", function () {

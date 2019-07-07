@@ -17,6 +17,7 @@ router.get("/analysis", (request, response) => {
 
 //Routes for API calls
 router.post("/api/lunch", (request, response) => {
+    "hit";
     user.insertNewLunch(request, response);
 })
 };

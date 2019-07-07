@@ -9,15 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/lunch-calculator:bootstrap.min.css" class="css">
-    <link rel="stylesheet" href="assets/css/style.css" class="css">
 
-    <title>Lunch Calculator</title>
+    <title>Lunchbox Chi</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.html">Lunch Calculator</a>
+        <a class="navbar-brand" href="/">Lunchbox Chi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -95,38 +93,39 @@
                                 id="example-datetime-local-input">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary submit">Submit</button>
+                    <button type="button" class="btn btn-primary submit" data-toggle="modal">Submit</button>
                 </div>
                 <div class="col-2"></div>
             </div>
         </div>
     </div>
-    <div class="container statsContainer hide">
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
-                <div class="card text-white bg-primary mb-3 stats" style="max-width: 40rem;">
-                    <div class="card-header stats">
-                        <h2>Meal Summary</h2>
-                    </div>
-                    <div class="card-body stats">
-                        <p class="card-text stats" id="restaurantSummary"></p>
-                        <p class="card-text stats" id="dateTimeSummary"></p>
-                        <p class="card-text stats" id="costSummary"></p>
-                        <p class="card-text stats" id="analysisSummary"></p>
-                        <br>
-                        <button type="button" class="btn btn-primary back">Back</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2"></div> 
-        </div>
+    
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lunchSummary">Lunch Summary</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body stats">
+        <p class="card-text stats" id="restaurantSummary"></p>
+        <p class="card-text stats" id="dateTimeSummary"></p>
+        <p class="card-text stats" id="costSummary"></p>
+        <p class="card-text stats" id="analysisSummary"></p>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
+  </div>
+</div>
 
     <!--  JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
@@ -136,9 +135,8 @@
     <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-    <script src="assets/javascript/app.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <!-- <script src="/assets/javascript/data.js"></script> -->
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
