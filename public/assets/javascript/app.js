@@ -58,7 +58,6 @@ $(document).ready(function () {
                 }
 
                 $(".back").on("click", function () {
-                    $(".statsContainer").addClass("hide");
                     $(".mealInput").removeClass("hide");
                     $(".restaurantInput").val("");
                     $(".locationInput").val("");

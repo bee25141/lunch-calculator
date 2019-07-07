@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/bee25141/lunch-calculator#readme",
   "dependencies": {
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "materialize": "^1.0.0",
