@@ -1,5 +1,6 @@
 //On document ready
 $(document).ready(function () {
+
     //setting the current date and time in browser placeholder
     let dateTimePlaceholder = new Date();
     $("#today").innerHTML = dateTimePlaceholder;
@@ -59,6 +60,12 @@ $(document).ready(function () {
         });
     });
 
+});
+
+$(document).ready(function() {
+    if(window.location === "analysis"){
+        console.log("analysis")
+  }
 });
 
 //Function for determining average cost per pound
