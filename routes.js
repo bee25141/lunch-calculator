@@ -6,11 +6,6 @@ module.exports = function(app){
 app.get("/", (request, response) => {
     response.render("pages/index");
 });
-
-app.get("/test", (request, response) => {
-    app.use(express.static(__dirname + '/public/views')); 
-});
-
 //routing traffic to the analysis page
 app.get("/analysis", function(request, response){
     response.render("pages/analysis_all");

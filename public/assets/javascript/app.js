@@ -63,7 +63,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function() {
-    if(window.location === "analysis"){
+    if(window.location === "analysis.ejs"){
         console.log("analysis")
   }
 });
