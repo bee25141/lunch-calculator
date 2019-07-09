@@ -4,12 +4,16 @@ let user = require("./controllers/user")
 module.exports = function(app){
 //Routing traffic to the home page
 app.get("/", (request, response) => {
-    response.send("index");
+    response.render("pages/index");
+});
+
+app.get("/test", (request, response) => {
+    app.use(express.static(__dirname + '/public/views')); 
 });
 
 //routing traffic to the analysis page
-app.get("/analysis", (request, response) => {
-    response.render(__dirname + "analysis_all");
+app.get("/analysis", function(request, response){
+    response.render("pages/analysis_all");
 });
 
 //Routes for API calls
