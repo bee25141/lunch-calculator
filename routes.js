@@ -4,11 +4,11 @@ let user = require("./controllers/user")
 module.exports = function(app){
 //Routing traffic to the home page
 app.get("/", (request, response) => {
-    response.render("pages/index");
+    response.render("index");
 });
 //routing traffic to the analysis page
 app.get("/analysis", function(request, response){
-    response.render("pages/analysis_all");
+    response.render("analysis_all");
 });
 
 //Routes for API calls

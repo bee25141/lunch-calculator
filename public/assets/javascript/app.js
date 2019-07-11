@@ -7,6 +7,7 @@ $(document).ready(function () {
 
     //Inputting meal stats
     $(".submit").on("click", function () {
+        console.log("click");
         event.preventDefault();
         // Form validation for inputs
         let validateForm = function () {
