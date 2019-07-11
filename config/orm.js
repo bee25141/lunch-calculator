@@ -11,11 +11,24 @@ let orm = {
             searchCriteria.push(queryObject.column);
             searchCriteria.push(queryObject.value);
         }
-        connection.query(queryString, searchCriteria, function (err, result) {
-            if (err) throw err;
-            callback(err, result);
+        connection.query(queryString, searchCriteria, function (error, result) {
+            if (error) throw error;
+            callback(error, result);
         });
     },
+
+    selectAllAverages: (queryObject, callback) => {
+        let queryString = "SELECT ??, GROUP_CONCAT(?? SEPARATOR ', ') FROM ?? GROUP BY ??;"
+        console.log(queryObject);
+        let searchCriteria = [queryObject.column1, queryObject.column2, queryObject.table, queryObject.groupBy];
+
+        connection.query(queryString, searchCriteria, function(error, result){
+            if (error) throw error;
+            console.log(result);
+            callback(error, result);
+        });
+    },
+
     insert: (queryObject, callback) => {
         let queryString = 'INSERT INTO ?? SET ?? = ?, ?? = ?, ?? = ?, ?? = ?, ?? =?, ?? = ?';
         let searchCriteria = [queryObject.table, queryObject.column1, queryObject.analysis, queryObject.column2, queryObject.cost,
@@ -23,8 +36,8 @@ let orm = {
             queryObject.column5, queryObject.restaurant, queryObject.column6, queryObject.weight
         ];
 
-        connection.query(queryString, searchCriteria, function (err, result) {
-            if (err) throw err;
+        connection.query(queryString, searchCriteria, function (error, result) {
+            if (error) throw error;
             callback(result);
         });
     },
@@ -32,17 +45,17 @@ let orm = {
         let queryString = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
         let searchCriteria = [queryObject.table, queryObject.column, queryObject.value, queryObject.row, queryObject.id];
 
-        connection.query(queryString, searchCriteria, function (err, result) {
-            if (err) throw err;
+        connection.query(queryString, searchCriteria, function (error, result) {
+            if (error) throw error;
             callback(result)
         });
     },
     delete: function (queryObject, callback) {
         let queryString = 'DELETE FROM ?? WHERE ?? = ?';
         let searchCriteria = [queryObject.table, queryObject.row, queryObject.id];
-        
-        connection.query(queryString, searchCriteria, function (err, result) {
-            if (err) throw err;
+
+        connection.query(queryString, searchCriteria, function (error, result) {
+            if (error) throw error;
             callback(result)
         });
     }

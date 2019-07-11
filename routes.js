@@ -7,7 +7,7 @@ app.get("/", (request, response) => {
     response.render("index");
 });
 //routing traffic to the analysis page
-app.get("/analysis", function(request, response){
+app.get("/analysis", (request, response) => {
     response.render("analysis_all");
 });
 
@@ -18,6 +18,6 @@ app.post("/api/lunch", (request, response) => {
 
 //Get request for all restaurant averages
 app.get("/api/graph", (request, response) => {
-    console.log("hit");
+    user.getAllAnalysis(request, response);
 })
 };

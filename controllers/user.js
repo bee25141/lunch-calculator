@@ -1,7 +1,7 @@
 let orm = require("../config/orm");
 
 let user = {
-    insertNewLunch: function (request, response) {
+    insertNewLunch: (request, response) => {
         orm.insert({
                 table: "lunch_data",
                 column1: "analysis",
@@ -20,7 +20,17 @@ let user = {
                 response.json(result);
             });
 
-        }
+        },
+    getAllAnalysis: (request, response) => {
+        orm.selectAllAverages({
+            column1: "restaurant",
+            column2: "analysis",
+            table: "lunch_data",
+            groupBy: "restaurant"
+        }, function(error, result){
+            response.json(result);
+        });
+    }
 };
 
 module.exports = user;

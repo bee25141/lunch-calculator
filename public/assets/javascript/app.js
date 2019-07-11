@@ -7,7 +7,6 @@ $(document).ready(function () {
 
     //Inputting meal stats
     $(".submit").on("click", function () {
-        console.log("click");
         event.preventDefault();
         // Form validation for inputs
         let validateForm = function () {
@@ -60,14 +59,17 @@ $(document).ready(function () {
             $(".dateTimeInput").val("");
         });
     });
-
+    getGraph();
 });
 
-$(document).ready(function() {
-    if(window.location === "analysis.ejs"){
-        console.log("analysis")
-  }
-});
+//Function for getting all restaurant averages for graph
+let getGraph = function(){
+
+    $.get("/api/graph", function(data){
+        console.log(data)
+    });
+
+};
 
 //Function for determining average cost per pound
 let lunchAnalysis = function (cost, weight) {
@@ -77,19 +79,19 @@ let lunchAnalysis = function (cost, weight) {
 };
 
 //Function for getting the average cost per pound at each restaurant
-let getAnalysis = function (restaurant, data) {
-    var restaurant = restaurant;
-    let dataSnap = data;
-    dataSnap = (Object.values(dataSnap));
-    for (i = 0; i < dataSnap.length; i++) {
-        let dataSumArray = [(dataSnap[i].analysis)];
-        var dataSum = dataSumArray.reduce(function (a, b) {
-            return a + b;
-        }, 0) / (dataSumArray.length);
-    }
-    var restaurantAnalysis = {
-        restaurant: restaurant,
-        value: dataSum
-    };
-    analysisArray.push(restaurantAnalysis);
-};
+// let getAnalysis = function (restaurant, data) {
+//     var restaurant = restaurant;
+//     let dataSnap = data;
+//     dataSnap = (Object.values(dataSnap));
+//     for (i = 0; i < dataSnap.length; i++) {
+//         let dataSumArray = [(dataSnap[i].analysis)];
+//         var dataSum = dataSumArray.reduce(function (a, b) {
+//             return a + b;
+//         }, 0) / (dataSumArray.length);
+//     }
+//     var restaurantAnalysis = {
+//         restaurant: restaurant,
+//         value: dataSum
+//     };
+//     analysisArray.push(restaurantAnalysis);
+// };
