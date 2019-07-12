@@ -66,7 +66,10 @@ $(document).ready(function () {
 let getGraph = function(){
 
     $.get("/api/graph", function(data){
-        console.log(data)
+        // console.log(data)
+        for(i=0; i<data.length; i++){
+            console.log(data[i]);
+        }
     });
 
 };
