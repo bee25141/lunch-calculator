@@ -19,7 +19,6 @@ let orm = {
 
     selectAllAverages: (queryObject, callback) => {
         let queryString = "SELECT ??, GROUP_CONCAT(?? SEPARATOR ', '), ROUND(AVG(??), 2) AS average FROM ?? GROUP BY ??;"
-        console.log(queryObject);
         let searchCriteria = [queryObject.column1, queryObject.column2, queryObject.column2, queryObject.table, queryObject.groupBy];
 
         connection.query(queryString, searchCriteria, function(error, result){

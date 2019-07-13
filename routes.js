@@ -16,13 +16,13 @@ app.post("/api/lunch", (request, response) => {
     user.insertNewLunch(request, response);
 });
 
-//Get request for restaurant by ID
-app.get("/api/:id", (request, response) => {
+//Get request for all restaurant averages
+app.get("/api/data", (request, response) => {
     user.getAllAnalysis(request, response);
 })
 
-//Get request for all restaurant averages
-app.get("/api/graph", (request, response) => {
-    user.getAllAnalysis(request, response);
+//Get request for restaurant by ID
+app.get("/api/data/:id", (request, response) => {
+    user.selectById(request, response);
 })
 };

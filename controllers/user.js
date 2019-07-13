@@ -21,12 +21,25 @@ let user = {
             });
 
         },
+
     getAllAnalysis: (request, response) => {
         orm.selectAllAverages({
             column1: "restaurant",
             column2: "analysis",
             table: "lunch_data",
             groupBy: "restaurant"
+        }, function(error, result){
+            response.json(result);
+        });
+    },
+
+    selectById: (request, response) => {
+        console.log(request.params)
+        orm.select({
+            selection: "*",
+            table: "lunch_data",
+            column: "restaurant",
+            value: request.params.id
         }, function(error, result){
             response.json(result);
         });

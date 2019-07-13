@@ -63,7 +63,7 @@ let lunchAnalysis = function (cost, weight) {
 let analysisArray = [];
 let getGraph = function (callback) {
 
-    $.get("/api/graph", function (data) {
+    $.get("/api/data", function (data) {
         for (i = 0; i < data.length; i++) {
             let graphData = {
                 restaurant: data[i].restaurant,
@@ -98,11 +98,7 @@ function barGraphDisplay() {
 
     const yScale = d3.scaleLinear()
         .range([height, 0])
-        .domain([0, 40])
-
-    // vertical grid lines
-    // const makeXLines = () => d3.axisBottom()
-    //   .scale(xScale)
+        .domain([0, 14])
 
     const makeYLines = () => d3.axisLeft()
         .scale(yScale)
@@ -113,15 +109,6 @@ function barGraphDisplay() {
 
     chart.append('g')
         .call(d3.axisLeft(yScale));
-
-    // vertical grid lines
-    // chart.append('g')
-    //   .attr('class', 'grid')
-    //   .attr('transform', `translate(0, ${heigcoht})`)
-    //   .call(makeXLines()
-    //     .tickSize(-height, 0, 0)
-    //     .tickFormat('')
-    //   )
 
     chart.append('g')
         .attr('class', 'grid')
@@ -176,5 +163,14 @@ function barGraphDisplay() {
 
     svg.selectAll(".bar").on("click", function (g) {
         console.log(g.restaurant);
+        let id = g.restaurant;
+
+        $.get("/api/data/" + id, (data) => {
+            console.log(data);
+
+            for(i=0; i<data.length; i++){
+                console.log(data[i])
+            }
+        })
     });
 };
