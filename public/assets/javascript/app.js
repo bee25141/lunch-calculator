@@ -166,10 +166,9 @@ function barGraphDisplay() {
         let id = g.restaurant;
 
         $.get("/api/data/" + id, (data) => {
-            console.log(data);
 
             for(i=0; i<data.length; i++){
-                console.log(data[i])
+                console.log(data[i].location)
             }
         })
     });
