@@ -61,10 +61,10 @@ let lunchAnalysis = function (cost, weight) {
 
 //Function for getting all restaurant averages for graph
 let analysisArray = [];
-let getGraph = function(callback){
+let getGraph = function (callback) {
 
-    $.get("/api/graph", function(data){
-        for(i=0; i<data.length; i++){
+    $.get("/api/graph", function (data) {
+        for (i = 0; i < data.length; i++) {
             let graphData = {
                 restaurant: data[i].restaurant,
                 value: data[i].average
@@ -80,7 +80,7 @@ function barGraphDisplay() {
 
     const svg = d3.select('svg');
     const svgContainer = d3.select('#container');
-    for (i=0; i<analysisArray.length; i++){
+    for (i = 0; i < analysisArray.length; i++) {
         var dataSet = analysisArray[i].value;
     };
 
@@ -129,7 +129,7 @@ function barGraphDisplay() {
             .tickSize(-width, 0, 0)
             .tickFormat('')
         )
-    // console.log(analysisArray.length)
+
     const barGroups = chart.selectAll()
         .data(analysisArray)
         .enter()
@@ -142,57 +142,6 @@ function barGraphDisplay() {
         .attr('y', (g) => yScale(g.value))
         .attr('height', (g) => height - yScale(g.value))
         .attr('width', xScale.bandwidth())
-    // .on('mouseenter', function (actual, i) {
-    //     d3.selectAll('.value')
-    //         .attr('opacity', 0)
-
-    // d3.select(this)
-    //     .transition()
-    //     .duration(300)
-    //     .attr('opacity', 0.6)
-    //     .attr('x', (a) => xScale(a.language) - 5)
-    //     .attr('width', xScale.bandwidth() + 10)
-
-    //     const y = yScale(actual.value)
-
-    //     line = chart.append('line')
-    //         .attr('id', 'limit')
-    //         .attr('x1', 0)
-    //         .attr('y1', y)
-    //         .attr('x2', width)
-    //         .attr('y2', y)
-
-    //     barGroups.append('text')
-    //         .attr('class', 'divergence')
-    //         .attr('x', (a) => xScale(a.language) + xScale.bandwidth() / 2)
-    //         .attr('y', (a) => yScale(a.value) + 30)
-    //         .attr('fill', 'white')
-    //         .attr('text-anchor', 'middle')
-    //         .text((a, idx) => {
-    //             const divergence = (a.value - actual.value).toFixed(1)
-
-    //             let text = ''
-    //             if (divergence > 0) text += '+'
-    //             text += `${divergence}%`
-
-    //             return idx !== i ? text : '';
-    //         })
-
-    // })
-    // .on('mouseleave', function () {
-    //     d3.selectAll('.value')
-    //         .attr('opacity', 1)
-
-    //     d3.select(this)
-    //         .transition()
-    //         .duration(300)
-    //         .attr('opacity', 1)
-    //         .attr('x', (a) => xScale(a.language))
-    //         .attr('width', xScale.bandwidth())
-
-    //     chart.selectAll('#limit').remove()
-    //     chart.selectAll('.divergence').remove()
-    // })
 
     barGroups
         .append('text')
@@ -225,11 +174,7 @@ function barGraphDisplay() {
         .attr('text-anchor', 'middle')
         .text('Average Cost of Meal Per Pound')
 
-    // svg.append('text')
-    //     .attr('class', 'source')
-    //     .attr('x', width - margin / 2)
-    //     .attr('y', height + margin * 1.7)
-    //     .attr('text-anchor', 'start')
-    //     .text('Source: Stack Overflow, 2018')
-
+    svg.selectAll(".bar").on("click", function (g) {
+        console.log(g.restaurant);
+    });
 };
