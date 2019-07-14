@@ -1,3 +1,7 @@
+let averagesArray = [];
+let dataArray = [];
+
+
 //Function for displaying D3 bargraph
 function barGraphDisplay() {
 
@@ -88,15 +92,22 @@ function barGraphDisplay() {
         console.log(g.restaurant);
         let id = g.restaurant;
 
-        $.get("/api/data/" + id, (data) => {
+        $.get("/api/data/" + id, data => {
 
             for (i = 0; i < data.length; i++) {
-                // console.log(data[i].location)
+                dataArray.push(data[i]);
+                dataArray.sort((a, b) => (a.analysis > b.analysis) ? 1 : -1);
+                console.log(dataArray);
             }
         });
 
         $.get("api/average/" + id, averages => {
-            console.log(averages);
-        })
+            for(i=0; i<averages.length; i++){
+                averagesArray.push(averages[i]);
+                averagesArray.sort((a, b) => (a.average > b.average) ? 1 : -1);
+            }
+        });
+
+        $()
     });
 };
