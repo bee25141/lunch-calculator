@@ -93,21 +93,26 @@ function barGraphDisplay() {
         let id = g.restaurant;
 
         $.get("/api/data/" + id, data => {
+            let avgTotalCostArray = [];
 
             for (i = 0; i < data.length; i++) {
                 dataArray.push(data[i]);
                 dataArray.sort((a, b) => (a.analysis > b.analysis) ? 1 : -1);
-                console.log(dataArray);
-            }
+
+                avgTotalCostArray.push(data[i].cost);
+            };
+            let avgTotalCost = (avgTotalCostArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / avgTotalCostArray.length).toFixed(2);
+            console.log(avgTotalCost);
         });
 
         $.get("api/average/" + id, averages => {
+            
             for(i=0; i<averages.length; i++){
                 averagesArray.push(averages[i]);
                 averagesArray.sort((a, b) => (a.average > b.average) ? 1 : -1);
             }
         });
 
-        $()
+        $("#restaurantName").append()
     });
 };
