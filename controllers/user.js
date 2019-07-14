@@ -16,22 +16,11 @@ let user = {
                 restaurant: request.body.restaurant,
                 column6: "weight",
                 weight: request.body.weight
-            }, function (error, result) {
+            }, (error, result) => {
                 response.json(result);
             });
 
         },
-
-    getAllAnalysis: (request, response) => {
-        orm.selectAllAverages({
-            column1: "restaurant",
-            column2: "analysis",
-            table: "lunch_data",
-            groupBy: "restaurant"
-        }, function(error, result){
-            response.json(result);
-        });
-    },
 
     selectById: (request, response) => {
         console.log(request.params)
@@ -40,7 +29,32 @@ let user = {
             table: "lunch_data",
             column: "restaurant",
             value: request.params.id
-        }, function(error, result){
+        }, (error, result) => {
+            response.json(result);
+        });
+    },
+
+    getAllAnalysis: (request, response) => {
+        orm.selectAllAverages({
+            column1: "restaurant",
+            column2: "analysis",
+            table: "lunch_data",
+            groupBy: "restaurant"
+        }, (error, result) => {
+            response.json(result);
+        });
+    },
+
+    getLocationAnalysis: (request, response) => {
+        console.log(request.params);
+        orm.selectLocationAverage({
+            column1: "location",
+            column2: "analysis",
+            table: "lunch_data",
+            condition: "restaurant",
+            value: request.params.id,
+            groupBy: "location"
+        }, (error, result) => {
             response.json(result);
         });
     }

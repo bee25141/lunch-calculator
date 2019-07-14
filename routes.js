@@ -10,6 +10,10 @@ app.get("/", (request, response) => {
 app.get("/analysis", (request, response) => {
     response.render("analysis_all");
 });
+//routing traffic to the restaurant map page
+app.get("/map", (request, response) => {
+    response.render("map");
+});
 
 //Routes for API calls
 app.post("/api/lunch", (request, response) => {
@@ -25,4 +29,9 @@ app.get("/api/data", (request, response) => {
 app.get("/api/data/:id", (request, response) => {
     user.selectById(request, response);
 })
+
+app.get("/api/average/:id", (request, response) => {
+    console.log("hit");
+    user.getLocationAnalysis(request, response);
+});
 };

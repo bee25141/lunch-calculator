@@ -17,11 +17,21 @@ let orm = {
         });
     },
 
+    selectLocationAverage: (queryObject, callback) => {
+        let queryString = "SELECT ??, GROUP_CONCAT(??), ROUND(AVG(??), 2) AS average FROM ?? WHERE ?? = ? GROUP BY ??;";
+        let searchCriteria = [queryObject.column1, queryObject.column2, queryObject.column2, queryObject.table, queryObject.condition, queryObject.value, queryObject.groupBy];
+
+        connection.query(queryString, searchCriteria, function(error, result){
+            if (error) throw error;
+            callback(error, result);
+        }); 
+    },
+
     selectAllAverages: (queryObject, callback) => {
         let queryString = "SELECT ??, GROUP_CONCAT(?? SEPARATOR ', '), ROUND(AVG(??), 2) AS average FROM ?? GROUP BY ??;"
         let searchCriteria = [queryObject.column1, queryObject.column2, queryObject.column2, queryObject.table, queryObject.groupBy];
 
-        connection.query(queryString, searchCriteria, function(error, result){
+        connection.query(queryString, searchCriteria, function (error, result) {
             if (error) throw error;
             callback(error, result);
         });
@@ -48,7 +58,7 @@ let orm = {
             callback(result)
         });
     },
-    delete: function (queryObject, callback) {
+    delete: (queryObject, callback) => {
         let queryString = 'DELETE FROM ?? WHERE ?? = ?';
         let searchCriteria = [queryObject.table, queryObject.row, queryObject.id];
 
