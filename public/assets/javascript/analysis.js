@@ -97,22 +97,30 @@ function barGraphDisplay() {
 
             for (i = 0; i < data.length; i++) {
                 dataArray.push(data[i]);
-                dataArray.sort((a, b) => (a.analysis > b.analysis) ? 1 : -1);
 
                 avgTotalCostArray.push(data[i].cost);
             };
+            dataArray.sort((a, b) => (a.analysis > b.analysis) ? 1 : -1);
+
             let avgTotalCost = (avgTotalCostArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / avgTotalCostArray.length).toFixed(2);
             console.log(avgTotalCost);
+            $("#avgTotalCostModal").append(avgTotalCost);
         });
 
         $.get("api/average/" + id, averages => {
             
             for(i=0; i<averages.length; i++){
                 averagesArray.push(averages[i]);
-                averagesArray.sort((a, b) => (a.average > b.average) ? 1 : -1);
+            };
+            averagesArray.sort((a, b) => (a.average > b.average) ? 1 : -1);
+            console.log(averagesArray);
+            for(i=0; i<averagesArray.length; i++){
+                $("#locationModal").append(averagesArray[i].location + "<br/>" + " Average Cost Per Pound: $" + averagesArray[i].average + "<br/>");
             }
         });
 
-        $("#restaurantName").append()
+        $("#restaurantNameModal").append(id);
+
+        $('#dataModal').modal('show');
     });
 };
