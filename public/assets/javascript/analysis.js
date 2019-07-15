@@ -89,6 +89,9 @@ function barGraphDisplay() {
         .text('Average Cost of Meal Per Pound')
 
     svg.selectAll(".bar").on("click", function (g) {
+        $("#locationModal").empty();
+        $("#restaurantNameModal").empty();
+        $("#avgTotalCostModal").empty();
         console.log(g.restaurant);
         let id = g.restaurant;
 
@@ -104,18 +107,18 @@ function barGraphDisplay() {
 
             let avgTotalCost = (avgTotalCostArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / avgTotalCostArray.length).toFixed(2);
             console.log(avgTotalCost);
-            $("#avgTotalCostModal").append(avgTotalCost);
+            $("#avgTotalCostModal").append("Average Total Cost: $" + avgTotalCost);
         });
 
         $.get("api/average/" + id, averages => {
-            
-            for(i=0; i<averages.length; i++){
+
+            for (i = 0; i < averages.length; i++) {
                 averagesArray.push(averages[i]);
             };
             averagesArray.sort((a, b) => (a.average > b.average) ? 1 : -1);
             console.log(averagesArray);
-            for(i=0; i<averagesArray.length; i++){
-                $("#locationModal").append(averagesArray[i].location + "<br/>" + " Average Cost Per Pound: $" + averagesArray[i].average + "<br/>");
+            for (i = 0; i < averagesArray.length; i++) {
+                $("#locationModal").append(averagesArray[i].location + "<br/>" + " Average Cost Per Pound: $" + averagesArray[i].average + "<br/>" + "<br/>");
             }
         });
 

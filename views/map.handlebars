@@ -61,9 +61,10 @@
 
         map = new google.maps.Map(
             document.getElementById('map'), {center: chicago, zoom: 15});
+            console.log(averagesArray)
 
         var request = {
-          query: '230 w monroe st, chicago, il 60606',
+          query: "120 s. lasalle, chicago, IL, 60603",
           fields: ['name', 'geometry'],
         };
 

@@ -70,7 +70,7 @@ let getGraph = function (callback) {
             let graphData = {
                 restaurant: data[i].restaurant,
                 value: data[i].average
-            }
+            };
             analysisArray.push(graphData);
         };
     }).then(callback);

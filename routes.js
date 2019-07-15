@@ -12,6 +12,7 @@ app.get("/analysis", (request, response) => {
 });
 //routing traffic to the restaurant map page
 app.get("/map", (request, response) => {
+    ("hit")
     response.render("map");
 });
 
@@ -31,7 +32,6 @@ app.get("/api/data/:id", (request, response) => {
 })
 
 app.get("/api/average/:id", (request, response) => {
-    console.log("hit");
     user.getLocationAnalysis(request, response);
 });
 };
