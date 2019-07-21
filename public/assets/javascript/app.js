@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     // Firebase configuration for client side authentication
-    let firebaseConfig = {
+    const firebaseConfig = {
         apiKey: "AIzaSyBOuXf9SKDWWCSBYueQCXThfVt_iXp3v20",
         authDomain: "lunchbox-chi.firebaseapp.com",
         databaseURL: "https://lunchbox-chi.firebaseio.com",
@@ -68,7 +68,7 @@ $(document).ready(function () {
 
 });
 
-$(".signIn").on("click", function () {
+$(".signInBtn").on("click", function () {
     event.preventDefault();
 
     let email = $("#signInEmail").val().trim();
@@ -76,14 +76,25 @@ $(".signIn").on("click", function () {
 
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
 
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        let errorCode = error.code;
+        let errorMessage = error.message;
 
     });
 
     console.log(firebase.auth().currentUser);
 
 });
+
+$(".signOut").on("click", function(){
+    console.log("sign out")
+    firebase.auth().signOut().catch(function (error) {
+
+        let errorCode = error.code;
+        let errorMessage = error.message;
+
+    });
+    console.log(firebase.auth().currentUser);
+})
 
 //Function for determining average cost per pound
 let lunchAnalysis = function (cost, weight) {
