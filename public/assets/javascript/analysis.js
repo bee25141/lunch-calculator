@@ -89,7 +89,7 @@ function barGraphDisplay() {
         .text('Average Cost of Meal Per Pound')
 
     svg.selectAll(".bar").on("click", function (g) {
-        $("#locationModal").empty();
+        $("#locationModal").html(" ");
         $("#restaurantNameModal").empty();
         $("#avgTotalCostModal").empty();
         console.log(g.restaurant);

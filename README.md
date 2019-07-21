@@ -1,20 +1,20 @@
 # lunch-calculator
-There's nothing worse than paying $15.00 for lunch in Chicago and being hungry two hours later. The lunch calculator is an ongoing project to find the best bargain on lunch. Users input the restaurant, meal description, weight, and cost of the meal; the data is stored in the Firebase database and users are returned an analysis of the cost per pound of their meal. I'm going to use the data to generate data visualizations of the best bargain lunch spots in Chicago.
+There's nothing worse than paying $15.00 for lunch in Chicago and being hungry two hours later. The lunch calculator is an ongoing project to find the best bargain on lunch. Users input the restaurant, meal description, weight, and cost of the meal; the data is stored in an AWS RDS MySQL database and users are returned an analysis of the cost per pound of their meal. The project is currently a Node.js Express application running on an AWS EC2 instance, but in the future I'm looking to rebuild the front end with React, and experiment with serverless architecture using API Gateway and Lambda functions to communicate with a DynamoDB database.
 
-![Lunch Calculator1](assets/images/lunch_calculator1.png)
-![Lunch Calculator2](assets/images/lunch_calculator2.png)
-![Lunch Calculator Firebase](assets/images/lunch_calculator_firebase.png)
+![Lunch Calculator1](public/assets/images/lunch_calculator1.png)
+![Lunch Calculator2](public/assets/images/lunch_calculator2.png)
 
 
 # Deployment
-The app is currently deployed on GitHub pages @ https://bee25141.github.io/lunch-calculator/
+(Under Construction)
 
 # Built With
-Bootstrap - The CSS framework used.
-Firebase for storing data.
-JavaScript.
-CSS.
-HTML.
+Amazon Web Services EC2 and RDS MySQL <br/>
+Node.js and Express.js <br/>
+d3.js <br/>
+Bootstrap - The CSS framework used. <br/>
+JavaScript & jQuery <br/>
+HTML 
 
 # Authors
 Tony Bee
