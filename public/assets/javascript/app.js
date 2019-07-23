@@ -1,19 +1,6 @@
 //On document ready
 $(document).ready(function () {
 
-    // Firebase configuration for client side authentication
-    const firebaseConfig = {
-        apiKey: "AIzaSyBOuXf9SKDWWCSBYueQCXThfVt_iXp3v20",
-        authDomain: "lunchbox-chi.firebaseapp.com",
-        databaseURL: "https://lunchbox-chi.firebaseio.com",
-        projectId: "lunchbox-chi",
-        storageBucket: "lunchbox-chi.appspot.com",
-        messagingSenderId: "661902338378",
-        appId: "1:661902338378:web:5ffd1154b5e8f793"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
     //Inputting meal stats
     $(".submit").on("click", function () {
         event.preventDefault();
@@ -101,6 +88,14 @@ $(".signOut").on("click", function () {
     console.log(firebase.auth().currentUser);
     // handleAuthDisplay();
 });
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log("user signed in");
+    } else {
+        console.log("user not signed out")
+    }
+  });
 
 // Function for displaying proper UI based on whether user signed in or out
 function handleAuthDisplay() {
