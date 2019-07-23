@@ -14,8 +14,6 @@ $(document).ready(function () {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    handleAuthDisplay();
-
     //Inputting meal stats
     $(".submit").on("click", function () {
         event.preventDefault();
@@ -81,11 +79,12 @@ $(".signInBtn").on("click", function () {
 
         let errorCode = error.code;
         let errorMessage = error.message;
+        user = firebase.auth().currentUser;
+
+        console.log(firebase.auth().currentUser);
+        handleAuthDisplay();
 
     });
-
-    console.log(firebase.auth().currentUser);
-    handleAuthDisplay();
 
 });
 
@@ -96,22 +95,22 @@ $(".signOut").on("click", function () {
 
         let errorCode = error.code;
         let errorMessage = error.message;
+        user = "";
 
     });
     console.log(firebase.auth().currentUser);
-    handleAuthDisplay();
+    // handleAuthDisplay();
 });
 
 // Function for displaying proper UI based on whether user signed in or out
 function handleAuthDisplay() {
-    let user = firebase.auth().currentUser;
 
     if (!user) {
         $(".signIn").removeClass("hide");
         $(".signOut").addClass("hide");
         $(".mealInput").addClass("hide");
         $(".signInInput").removeClass("hide");
-    } else if (user){
+    } if (user){
         $(".signIn").addClass("hide");
         $(".signOut").removeClass("hide");
         $(".mealInput").removeClass("hide");

@@ -17,7 +17,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">Lunchbox Chi</a>
+        <a class="navbar-brand">Lunchbox Chi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,10 +33,10 @@
             </ul>
             <ul class="navbar-nav ml-auto signIn">
                 <li class="nav-item">
-                    <a class="nav-link signIn" href="" data-target="#signInModal" data-toggle="modal">Sign In</a>
+                    <a class="nav-link signIn hide" href="" data-target="#signInModal" data-toggle="modal">Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link signOut" href="/">Sign Out</a>
+                    <a class="nav-link signOut hide" href="/">Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary signInBtn" href="/meal_input" >Sign In</button>
+                    <button type="button" class="btn btn-primary signInBtn" href="/meal_input" data-dismiss="modal">Sign In</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="back">Close</button>
                 </div>
             </div>
