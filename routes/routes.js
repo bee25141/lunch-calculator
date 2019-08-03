@@ -1,5 +1,5 @@
 
-let user = require("./controllers/user")
+let user = require("../controllers/user")
 
 module.exports = function(app){
 //Routing traffic to the home page
