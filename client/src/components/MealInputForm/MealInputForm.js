@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, FormInput, FormGroup, Button } from "shards-react";
+import "./style.css"
 
 
 export default function MealInputForm(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Container from "../../components/Grid/Grid"
+import { Col, Row, Container } from "../../components/Grid/Grid"
 import MealInputForm from "../../components/MealInputForm/MealInputForm"
 import "./style.css"
 
@@ -23,7 +23,7 @@ class MealInput extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target;
-        this.setState({[name]: value});
+        this.setState({[name]: value}, this.callback);
       };
 
     handleFormSubmit = event => {
@@ -35,9 +35,15 @@ class MealInput extends Component {
 
     render() {
         return (
-            <div>
-                <MealInputForm handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}/>
-            </div>
+            <Container fluid>
+                <Row>
+                    <Col size="sm-1 md-2"></Col>
+                    <Col size="sm-10 md-8">
+                    <MealInputForm handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}/>
+                    </Col>
+                    <Col size="sm-1 md-2"></Col>
+                </Row>
+            </Container>
         );
     };
 }
