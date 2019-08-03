@@ -1,11 +1,9 @@
 require('dotenv').config();
 
 const express = require("express");
-const routs = require("./routes")
-
-let PORT = process.env.PORT || 8080;
-
-let app = express();
+const routes = require("./routes")
+const app = express();
+const PORT = process.env.PORT || 8080;
 
 // Define middleware
 app.use(express.urlencoded({extended: true}));
