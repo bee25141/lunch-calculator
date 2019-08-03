@@ -1,28 +1,26 @@
 require('dotenv').config();
 
-//Requires NPM express package
 const express = require("express");
+const routs = require("./routes")
 
 let PORT = process.env.PORT || 8080;
 
 let app = express();
 
-//Parse application body as JSON
+// Define middleware
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-// Serve static content for the app from the "public" directory in the application directory
-app.use(express.static(__dirname + '/public')); 
-
-let exphbs = require("express-handlebars");
-
-app.engine("handlebars", exphbs({defaultLayout: "main"}));
-app.set("view engine", "handlebars");
+// Serve up static assets
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+  }
 
 //Importing routes and giving server access to said routes
-require('./routes')(app);
+app.use(routes);
 
-//Starting server
-app.listen(PORT, function () {
-    console.log("Server listening on:" + PORT);
-})
+// Start the API server
+app.listen(PORT, function() {
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  });
+  
