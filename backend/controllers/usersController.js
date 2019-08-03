@@ -1,4 +1,4 @@
-let orm = require("../config/orm");
+let orm = require("../models/orm");
 
 let user = {
     insertNewLunch: (request, response) => {
