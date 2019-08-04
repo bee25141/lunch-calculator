@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid/Grid"
-import MealInputForm from "../../components/MealInputForm/MealInputForm"
+import { Col, Row, Container } from "../../components/Grid/Grid";
+import MealInputForm from "../../components/MealInputForm/MealInputForm";
+import Api from "../../utils/Api";
 import "./style.css"
 
 class MealInput extends Component {
@@ -31,6 +32,7 @@ class MealInput extends Component {
         let analysis = this.state.cost / this.state.weight;
         analysis = analysis.toFixed(2);
         this.setState({analysis: analysis}, this.callback);
+        Api.addLunch(this.state);
     }
 
     render() {
