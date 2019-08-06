@@ -7,17 +7,17 @@ const users = require("../../controllers/usersController")
 
 // Posting new lunch
 router
-    .route("/api/lunch")
+    .route("/lunch")
     .post(users.insertNewLunch);
 
 //Get request for all restaurant averages
 router
-    .route("/api/data")
+    .route("/data")
     .get(users.getAllAnalysis);
 
 //Get request for restaurant by ID
 router
-    .route("/api/data/:id")
+    .route("/data/:id")
     .get(users.selectById);
 
 module.exports = router;

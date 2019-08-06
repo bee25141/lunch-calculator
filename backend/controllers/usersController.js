@@ -1,7 +1,8 @@
 let orm = require("../models/orm");
 
-let user = {
+module.exports = {
     insertNewLunch: (request, response) => {
+        console.log(request.body);
         orm.insert({
                 table: "lunch_data",
                 column1: "analysis",
@@ -35,6 +36,7 @@ let user = {
     },
 
     getAllAnalysis: (request, response) => {
+        console.log("get all endpoint", request)
         orm.selectAllAverages({
             column1: "restaurant",
             column2: "analysis",
@@ -59,5 +61,3 @@ let user = {
         });
     }
 };
-
-module.exports = user;
