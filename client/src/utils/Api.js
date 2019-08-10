@@ -11,7 +11,7 @@ export default {
         axios.post("/api/users/lunch", lunch)
         .then(function (response){
       
-            for (let i=0; i < response.data.length; i++){
+            for (var i=0; i < response.data.length; i++){
      
              let graphData = {
                    restaurant: response.data[i].restaurant,

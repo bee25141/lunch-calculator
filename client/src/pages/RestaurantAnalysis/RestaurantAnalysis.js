@@ -15,7 +15,6 @@ class RestaurantAnalysis extends Component {
    componentDidMount () {
      Api.getAllData()
      .then(res => {
-      //  console.log(res.data)
        this.setState({restaurantData: res.data})
      })
 
