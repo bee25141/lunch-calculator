@@ -20,6 +20,7 @@ class BarGraph extends Component {
         // console.log(this.props.data)
         // const width = 800;
         // const height = 450;
+        console.log(this.props.data)
         const margin = 50;
         const width = 1000 - 2 * margin;
         const height = 600 - 2 * margin;
@@ -41,6 +42,20 @@ class BarGraph extends Component {
     
         const makeYLines = () => d3.axisLeft()
             .scale(yScale)
+
+        svg.append('g')
+            .attr('transform', `translate(0, ${height})`)
+            .call(d3.axisBottom(xScale));
+    
+        svg.append('g')
+            .call(d3.axisLeft(yScale));
+    
+        svg.append('g')
+            .attr('class', 'grid')
+            .call(makeYLines()
+                .tickSize(-width, 0, 0)
+                .tickFormat('')
+            )
 
         return el.toReact();
     }
