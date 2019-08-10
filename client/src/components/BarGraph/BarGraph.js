@@ -13,16 +13,10 @@ class BarGraph extends Component {
         };
       }
     
-    componentDidMount(){
-        // this.drawChart();
-    }
-    
     drawChart() {
-        // console.log(this.props.data)
-        // const width = 800;
-        // const height = 450;
+
         console.log(this.props.data)
-        const margin = 50;
+        const margin = 40;
         const width = 1000 - 2 * margin;
         const height = 600 - 2 * margin;
         const el = new Element('div');
@@ -36,7 +30,7 @@ class BarGraph extends Component {
         const xScale = d3.scaleBand()
             .range([0, width])
             .domain(this.props.data.map((s) => s.restaurant))
-            .padding(0.75)
+            .padding(0.15)
     
         const yScale = d3.scaleLinear()
             .range([height, 0])

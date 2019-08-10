@@ -19,3 +19,8 @@ div#container {
   #map {
     height: 100%;
   }
+
+  #chart {
+
+    border: 1px solid #037bff;
+}
