@@ -27,6 +27,7 @@ class BarGraph extends Component {
         const el = new Element('div');
         const svg = d3.select(el)
             .append('svg')
+            .attr('transform', `translate(${margin}, ${margin})`)
             .attr('id', 'chart')
             .attr('width', width)
             .attr('height', height);
@@ -56,6 +57,49 @@ class BarGraph extends Component {
                 .tickSize(-width, 0, 0)
                 .tickFormat('')
             )
+        const barGroups = svg.selectAll()
+        .data(this.props.data)
+        .enter()
+        .append('g')
+    
+        barGroups
+            .append('rect')
+            .attr('class', 'bar')
+            .attr('x', (g) => xScale(g.restaurant))
+            .attr('y', (g) => yScale(g.average))
+            .attr('height', (g) => height - yScale(g.average))
+            .attr('width', xScale.bandwidth())
+    
+        barGroups
+            .append('text')
+            .attr('class', 'value')
+            .attr('x', (a) => xScale(a.restaurant) + xScale.bandwidth() / 2)
+            .attr('y', (a) => yScale(a.average) -10)
+            .attr('text-anchor', 'middle')
+            .text((a) => `$${a.average}`)
+    
+        svg
+            .append('text')
+            .attr('class', 'label')
+            .attr('x', -(height / 2) - margin)
+            .attr('y', margin / 2.4)
+            .attr('transform', 'rotate(-90)')
+            .attr('text-anchor', 'middle')
+            .text('$ / Pound')
+    
+        svg.append('text')
+            .attr('class', 'label')
+            .attr('x', width / 2 + margin)
+            .attr('y', height + margin * 1.7)
+            .attr('text-anchor', 'middle')
+            .text('Restaurants')
+    
+        svg.append('text')
+            .attr('class', 'title')
+            .attr('x', width / 2 + margin)
+            .attr('y', 15)
+            .attr('text-anchor', 'middle')
+            .text('Average Cost of Meal Per Pound')
 
         return el.toReact();
     }
