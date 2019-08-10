@@ -14,8 +14,9 @@ class BarGraph extends Component {
       }
     
     componentDidMount(){
-        this.drawChart();
+        // this.drawChart();
     }
+    
     drawChart() {
         // console.log(this.props.data)
         // const width = 800;
@@ -90,7 +91,7 @@ class BarGraph extends Component {
         svg.append('text')
             .attr('class', 'label')
             .attr('x', width / 2 + margin)
-            .attr('y', height + margin * 1.7)
+            .attr('y', height + margin * 1)
             .attr('text-anchor', 'middle')
             .text('Restaurants')
     
@@ -100,6 +101,11 @@ class BarGraph extends Component {
             .attr('y', 15)
             .attr('text-anchor', 'middle')
             .text('Average Cost of Meal Per Pound')
+
+        svg.selectAll('.bar').on('click', function() {
+            console.log(this.__data__.restaurant)
+        })
+
 
         return el.toReact();
     }
