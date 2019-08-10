@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css"
 import BarGraph from "../../components/BarGraph/BarGraph"
+import {Container, Row, Col} from "../../components/Grid/Grid"
 import Api from "../../utils/Api";
 
 class RestaurantAnalysis extends Component {
@@ -22,10 +23,16 @@ class RestaurantAnalysis extends Component {
 	render() {
 
         return (
+              <Container>
+                  <Row>
 
-              <div>
-                  <BarGraph data={this.state.restaurantData} />
-              </div>
+                      <Col size="md-11">
+                         <BarGraph data={this.state.restaurantData} />
+                      </Col>
+                      <Col size="md-1"></Col>
+                      
+                  </Row>  
+              </Container>
 
             );
           };
