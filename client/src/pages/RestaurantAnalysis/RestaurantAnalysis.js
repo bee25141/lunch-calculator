@@ -24,14 +24,13 @@ class RestaurantAnalysis extends Component {
 
         return (
               <Container>
-                  <Row>
+                
 
-                      <Col size="md-11">
+
                          <BarGraph data={this.state.restaurantData} />
-                      </Col>
-                      <Col size="md-1"></Col>
+
                       
-                  </Row>  
+                    
               </Container>
 
             );
