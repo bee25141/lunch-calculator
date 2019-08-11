@@ -23,5 +23,9 @@ export default {
             return graphArray
           })
                 
+    },
+
+    getLocationData: function(restaurant) {
+        return axios.get("/api/users/location/" + restaurant)
     }
 }

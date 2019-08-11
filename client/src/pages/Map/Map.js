@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import Api from "../../utils/Api";
 
 
 const mapStyles = {
@@ -7,7 +8,7 @@ const mapStyles = {
     height: '100%',
   };
 
-  export class MapContainer extends Component {
+  class MapContainer extends Component {
     constructor(props) {
       super(props);
   
@@ -20,6 +21,13 @@ const mapStyles = {
                 {latitude: 47.5524695, longitude: -122.0425407}]
       }
     }
+
+    componentDidMount(){
+        Api.getLocationData("chipotle")
+        .then(res => {
+            console.log(res)
+        })
+    }
   
     displayMarkers = () => {
       return this.state.stores.map((store, index) => {
@@ -30,14 +38,14 @@ const mapStyles = {
        onClick={() => console.log("You clicked me!")} />
       })
     }
-  
+
     render() {
       return (
           <Map
             google={this.props.google}
-            zoom={8}
+            zoom={14.5}
             style={mapStyles}
-            initialCenter={{ lat: 47.444, lng: -122.176}}
+            initialCenter={{ lat: 41.879, lng: -87.625}}
           >
             {this.displayMarkers()}
           </Map>
@@ -46,5 +54,5 @@ const mapStyles = {
   }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyCtTlBeZsBB9nlCBbeewpfhPwqsai3ZT7E'
+    apiKey: 'AIzaSyBOuXf9SKDWWCSBYueQCXThfVt_iXp3v20'
   })(MapContainer);

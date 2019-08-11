@@ -18,8 +18,8 @@ let orm = {
     },
 
     selectLocationAverage: (queryObject, callback) => {
-        let queryString = "SELECT ??, GROUP_CONCAT(??), ROUND(AVG(??), 2) AS average FROM ?? WHERE ?? = ? GROUP BY ??;";
-        let searchCriteria = [queryObject.column1, queryObject.column2, queryObject.column2, queryObject.table, queryObject.condition, queryObject.value, queryObject.groupBy];
+        let queryString = "SELECT ??, ROUND(AVG(??), 2) AS average FROM ?? WHERE ?? = ? GROUP BY ??;";
+        let searchCriteria = [queryObject.column1, queryObject.column2, queryObject.table, queryObject.condition, queryObject.value, queryObject.groupBy];
 
         connection.query(queryString, searchCriteria, function(error, result){
             if (error) throw error;

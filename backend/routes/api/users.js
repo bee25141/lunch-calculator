@@ -17,7 +17,7 @@ router
 
 //Get request for restaurant by ID
 router
-    .route("/data/:id")
-    .get(users.selectById);
+    .route("/location/:id")
+    .get(users.getLocationAnalysis);
 
 module.exports = router;
