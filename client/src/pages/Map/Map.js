@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import Geocode from "react-geocode";
 import Api from "../../utils/Api";
+Geocode.setApiKey("AIzaSyBOuXf9SKDWWCSBYueQCXThfVt_iXp3v20");
 
 
 const mapStyles = {
@@ -14,17 +16,33 @@ const mapStyles = {
   
       this.state = {
         restaurant: "",
-        locations: [{latitude: 47.359423, longitude: -122.021071, average: ""},
-                {latitude: 47.2052192687988, longitude: -121.988426208496, average: ""},
-                {latitude: 47.6307081, longitude: -122.1434325, average: ""},
-                {latitude: 47.3084488, longitude: -122.2140121, average: ""},
-                {latitude: 47.5524695, longitude: -122.0425407, average: ""}]
+        locations: [{latitude: "", longitude: ""}]
       }
     }
 
+    callback = () => {
+      console.log(this.state);
+    }
+
     componentDidMount(){
-        Api.getLocationData("chipotle")
+       Api.getLocationData("chipotle")
+       .then(response => {
+        Promise.all(response.data.map(location => {
+
+            return Geocode.fromAddress(location.location)
+
+        })).then(endRes => {
+            // console.log(endRes.map(locat=>locat.results['0'].geometry.location))
+            let resultsArray = endRes.map(locat=>locat.results['0'].geometry.location)
+
+            resultsArray.map(item => {
+              this.setState({locations: [{latitude: item.lat, longitude: item.lng}]},this.callback)
+              console.log(item);
+            })
+
+        })
         
+    })
     }
   
     displayMarkers = () => {
