@@ -17,8 +17,11 @@ class BarGraph extends Component {
 
         console.log(this.props.data)
         const margin = 40;
-        const width = 1000 - 2 * margin;
-        const height = 600 - 2 * margin;
+        // const width = 980 - 2 * margin;
+        // const height = 550 - 2 * margin;
+        const width = 980;
+        const height = 540;
+        // const height = 600 - 2 * margin;
         const el = new Element('div');
         const svg = d3.select(el)
             .append('svg')
@@ -85,7 +88,7 @@ class BarGraph extends Component {
         svg.append('text')
             .attr('class', 'label')
             .attr('x', width / 2 + margin)
-            .attr('y', height + margin * 1)
+            .attr('y', height - 15)
             .attr('text-anchor', 'middle')
             .text('Restaurants')
     

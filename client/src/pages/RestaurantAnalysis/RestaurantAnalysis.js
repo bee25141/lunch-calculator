@@ -23,14 +23,15 @@ class RestaurantAnalysis extends Component {
 	render() {
 
         return (
-              <Container>
-                
-
-
-                         <BarGraph data={this.state.restaurantData} />
+              <Container fliuid>
+                  <Row>
 
                       
-                    
+                      <Col size="md-11">
+                         <BarGraph data={this.state.restaurantData} />
+                      </Col>
+                      
+                  </Row>
               </Container>
 
             );

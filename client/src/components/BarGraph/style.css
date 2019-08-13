@@ -1,9 +1,3 @@
-div#container {
-  width: 1000px;
-  height: 1000px;
-  margin: auto;
-  background-color: #e8ecef;
-}
 svg {
     width: 100%;
     height: 100%;
@@ -24,4 +18,8 @@ svg {
   #chart {
 
     border: 1px solid #037bff;
+}
+
+.tick {
+  /* font-size: 13px */
 }
