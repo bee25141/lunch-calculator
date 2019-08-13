@@ -16,7 +16,7 @@ const mapStyles = {
   
       this.state = {
         restaurant: "",
-        locations: [{latitude: "", longitude: ""}]
+        locations: []
       }
     }
 
@@ -32,24 +32,30 @@ const mapStyles = {
             return Geocode.fromAddress(location.location)
 
         })).then(endRes => {
-            // console.log(endRes.map(locat=>locat.results['0'].geometry.location))
-            let resultsArray = endRes.map(locat=>locat.results['0'].geometry.location)
 
-            resultsArray.map(item => {
-              this.setState({locations: [{latitude: item.lat, longitude: item.lng}]},this.callback)
-              console.log(item);
-            })
+            let resultsArray = [];
+            let results = endRes.map(locat=>locat.results['0'].geometry.location)
 
+            for (let i=0; i<results.length; i++){
+              let resultsObject = {
+                  latitude: results[i].lat,
+                  longitude: results[i].lng
+              }
+
+              resultsArray.push(resultsObject)
+            }
+            console.log(resultsArray)
+            this.setState({locations: resultsArray}, this.callback)
         })
         
     })
     }
   
     displayMarkers = () => {
-      return this.state.locations.map((store, index) => {
+      return this.state.locations.map((restaurant, index) => {
         return <Marker key={index} id={index} position={{
-         lat: store.latitude,
-         lng: store.longitude
+         lat: restaurant.latitude,
+         lng: restaurant.longitude
        }}
        onClick={() => console.log("You clicked me!")} />
       })
