@@ -15,7 +15,9 @@ const mapStyles = {
       super(props);
   
       this.state = {
+        addressKey: "",
         restaurant: "",
+        address_average: [],
         locations: []
       }
     }
@@ -27,6 +29,18 @@ const mapStyles = {
     componentDidMount(){
        Api.getLocationData("chipotle")
        .then(response => {
+         let addressData= [];
+         
+         for (let i=0; i < response.data.length; i++){
+            let addressObject = {
+              address: response.data[i].location,
+              average: response.data[i].average,
+              addressKey: [i]
+            }
+            addressData.push(addressObject)
+         }
+         this.setState({restaurant: "chipotle"})
+         this.setState({address_average: addressData})
         Promise.all(response.data.map(location => {
 
             return Geocode.fromAddress(location.location)
@@ -65,7 +79,7 @@ const mapStyles = {
       return (
           <Map
             google={this.props.google}
-            zoom={14.5}
+            zoom={14.35}
             style={mapStyles}
             initialCenter={{ lat: 41.879, lng: -87.625}}
           >
