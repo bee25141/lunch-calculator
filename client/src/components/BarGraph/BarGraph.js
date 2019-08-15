@@ -17,7 +17,7 @@ class BarGraph extends Component {
 
         console.log(this.props.data)
         const margin = 40;
-        const width = 980;
+        const width = 820;
         const height = 540;
         const el = new Element('div');
         const svg = d3.select(el)
