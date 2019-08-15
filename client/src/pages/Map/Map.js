@@ -15,7 +15,9 @@ const mapStyles = {
       super(props);
   
       this.state = {
-
+        restaurant: "",
+        average: [],
+        address: [],
         locations: [],
         showingInfoWindow: false,
         activeMarker: {},
@@ -30,86 +32,74 @@ const mapStyles = {
 
     componentDidMount(){
       let urlParams = this.props.match.params.id
-      var mapArray = []
 
-      console.log(urlParams)
-       Api.getLocationData(urlParams) 
+
+    //   // console.log(urlParams)
+       Api.getLocationData(urlParams)
+
        .then(response => {
-
-        for(let i=0; i<response.data.length; i++){
-
-            Geocode.fromAddress(response.data[i].location).then(
-                res => {
-                  const { lat, lng } = res.results[0].geometry.location;
-                  console.log(lat, lng);
-
-                  var map_data = {
-                      restaurant: urlParams,
-                      address: response.data[i].location,
-                      latitude: lat,
-                      longitude: lng,
-                      average: response.data[i].average
-                  }
-
-                  mapArray.push(map_data);
-                  
-                },
-                error => {
-                  console.error(error);
-                }
-              );
-        }  
-        console.log(mapArray);
-        this.setState({locations: mapArray}, this.callback)
-    })
-
-
-    //    .then(response => {
-    //      let addressData= [];
+         let addressData= [];
+         let averageData = [];
          
-    //      for (let i=0; i < response.data.length; i++){
-    //         let addressObject = {
-    //           address: response.data[i].location,
-    //           average: response.data[i].average,
-    //           addressKey: [i]
-    //         }
-    //         addressData.push(addressObject)
-    //      }
-    //      this.setState({restaurant: urlParams})
-    //      this.setState({address_average: addressData})
-    //     Promise.all(response.data.map(location => {
+         for (let i=0; i < response.data.length; i++){
+            let addressObject = {
+              address: response.data[i].location,
+              average: response.data[i].average,
+              addressKey: [i]
+            }
+            addressData.push(addressObject.address)
+            averageData.push(addressObject.average)
+         }
+         this.setState({restaurant: urlParams})
+         this.setState({address: addressData})
+         this.setState({average: averageData})
+        Promise.all(response.data.map(location => {
 
-    //         return Geocode.fromAddress(location.location)
+            return Geocode.fromAddress(location.location)
 
-    //     })).then(endRes => {
+        })).then(endRes => {
+            (console.log(endRes, "response", response))
+            let resultsArray = [];
+            let results = endRes.map(locat=>locat.results['0'].geometry.location)
 
-    //         let resultsArray = [];
-    //         let results = endRes.map(locat=>locat.results['0'].geometry.location)
+            for (let i=0; i<results.length; i++){
+              let resultsObject = {
 
-    //         for (let i=0; i<results.length; i++){
-    //           let resultsObject = {
-    //               latitude: results[i].lat,
-    //               longitude: results[i].lng
-    //           }
+                  latitude: results[i].lat,
+                  longitude: results[i].lng
+              }
 
-    //           resultsArray.push(resultsObject)
-    //         }
-    //         console.log(resultsArray)
-    //         this.setState({locations: resultsArray}, this.callback)
-    //     })
+              resultsArray.push(resultsObject)
+            }
+            console.log(resultsArray)
+            this.setState({locations: resultsArray}, this.callback)
+        })
         
-    // })
+    })
     }
-  
-    displayMarkers = () => {
-      return this.state.locations.map((restaurant, index) => {
-        return <Marker key={index} id={index} position={{
+
+    displayMarkers = () => {  
+       return this.state.locations.map((restaurant, index) => {
+        return <Marker 
+        title={this.state.address[index]}
+        name={this.state.average[index]}
+        key={index} 
+        id={index} 
+        position={{
          lat: restaurant.latitude,
          lng: restaurant.longitude
        }}
-       onClick={() => console.log("You clicked me!")} />
+       onMouseover={this.onMouseoverMarker} />
       })
     }
+
+    onMouseoverMarker = (props, marker, e) =>
+    this.setState({
+      
+      // selectedPlace: props,
+      // activeMarker: marker,
+      // showingInfoWindow: true
+    });
 
     render() {
       return (
