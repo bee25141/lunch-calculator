@@ -10,6 +10,8 @@ class RestaurantAnalysis extends Component {
     restaurantData: []
   }
 
+  
+
   callback = () => {
     console.log(this.state);
   }
