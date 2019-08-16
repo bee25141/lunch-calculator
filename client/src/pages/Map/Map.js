@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, MarkerWithLabel } from 'google-maps-react';
 import Geocode from "react-geocode";
 import Api from "../../utils/Api";
 Geocode.setApiKey("AIzaSyBOuXf9SKDWWCSBYueQCXThfVt_iXp3v20");
@@ -19,22 +19,15 @@ const mapStyles = {
         average: [],
         address: [],
         locations: [],
-        showingInfoWindow: false,
+        showingInfoWindow: true,
         activeMarker: {},
         selectedPlace: {},
       }
     }
 
-
-    callback = () => {
-      console.log(this.state);
-    }
-
     componentDidMount(){
       let urlParams = this.props.match.params.id
 
-
-    //   // console.log(urlParams)
        Api.getLocationData(urlParams)
 
        .then(response => {
@@ -80,6 +73,7 @@ const mapStyles = {
 
     displayMarkers = () => {  
        return this.state.locations.map((restaurant, index) => {
+
         return <Marker 
         title={this.state.address[index]}
         name={this.state.average[index]}
@@ -93,13 +87,9 @@ const mapStyles = {
       })
     }
 
-    onMouseoverMarker = (props, marker, e) =>
-    this.setState({
-      
-      // selectedPlace: props,
-      // activeMarker: marker,
-      // showingInfoWindow: true
-    });
+    onMouseoverMarker = (props, marker, e) => {
+      // console.log("mouse over")
+    }
 
     render() {
       return (
