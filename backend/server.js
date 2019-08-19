@@ -1,6 +1,7 @@
 const express = require("express");
 const routes = require("./routes")
 const app = express();
+const path = require("path")
 const PORT = process.env.PORT || 3001;
 
 // Define middleware
@@ -9,7 +10,7 @@ app.use(express.json());
 
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(__dirname + "../client", "build"));
+    app.use(express.static(path.join(__dirname + "../client", "build")));
   }
 
 //Importing routes and giving server access to said routes
