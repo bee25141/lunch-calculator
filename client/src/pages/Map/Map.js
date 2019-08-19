@@ -1,13 +1,17 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper, Marker, MarkerWithLabel } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import AddressCard from "../../components/Card/Card"
+import {Container, Row, Col} from "../../components/Grid/Grid"
 import Geocode from "react-geocode";
 import Api from "../../utils/Api";
 Geocode.setApiKey("AIzaSyBOuXf9SKDWWCSBYueQCXThfVt_iXp3v20");
 
 
 const mapStyles = {
-    width: '100%',
+    // width: '100%',
     height: '100%',
+    width: '100%',
+    height: 450
   };
 
   class MapContainer extends Component {
@@ -93,14 +97,36 @@ const mapStyles = {
 
     render() {
       return (
-          <Map
-            google={this.props.google}
-            zoom={14.35}
-            style={mapStyles}
-            initialCenter={{ lat: 41.879, lng: -87.625}}
-          >
-            {this.displayMarkers()}
-          </Map>
+        <Container fluid>
+            <Row>
+                <Col size="md-3">
+
+
+
+
+                    {this.state.address.map((item, index) => 
+                        <AddressCard 
+                        restaurant={this.state.restaurant}
+                        address={this.state.address[index]}
+                        average={this.state.average[index]}
+                        >
+                      </AddressCard>
+                    )}    
+
+                </Col>
+
+                <Col size="md-9">
+                    <Map
+                      google={this.props.google}
+                      zoom={14.35}
+                      style={mapStyles}
+                      initialCenter={{ lat: 41.879, lng: -87.625}}
+                      >
+                      {this.displayMarkers()}
+                    </Map>
+                </Col>
+            </Row>
+        </Container>
       );
     }
   }
