@@ -4,7 +4,8 @@
   "description": "There's nothing worse than paying $15.00 for lunch in Chicago and being hungry two hours later. The lunch calculator is an ongoing project to find the best bargain on lunch. Users input the restaurant, meal description, weight, and cost of the meal; the data is stored in the Firebase database and users are returned an analysis of the cost per pound of their meal. I'm going to use the data to generate data visualizations of the best bargain lunch spots in Chicago.",
   "main": "backend/server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    
+    "start": "npm run start:prod",
     "start:prod": "node backend/server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
