@@ -9,13 +9,18 @@
   //   password: "root",
   //   database: "lunch_box_chi"
   // });
-  let connection = mysql.createConnection({
+
+  if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+  } else {
+  var connection = mysql.createConnection({
       host: "test123.cql2tzwph3cy.us-east-1.rds.amazonaws.com",
       port: 3306,
       user: "test123",
       password: process.env.AWS_RDSDB,
       database: "lunch_box_chi"
   });
+}
 
   // Make connection.
   connection.connect(function (err) {
