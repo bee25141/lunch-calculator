@@ -28,11 +28,12 @@ class MealInput extends Component {
       };
 
     handleFormSubmit = event => {
-        event.preventDefault();
-        let analysis = this.state.cost / this.state.weight;
-        analysis = analysis.toFixed(2);
-        this.setState({analysis: analysis}, this.callback);
-        Api.addLunch(this.state);
+        console.log("disabled for demo day functionality")
+        // event.preventDefault();
+        // let analysis = this.state.cost / this.state.weight;
+        // analysis = analysis.toFixed(2);
+        // this.setState({analysis: analysis}, this.callback);
+        // Api.addLunch(this.state);
     }
 
     render() {

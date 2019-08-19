@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import AddressCard from "../../components/Card/Card"
+import AddressCard from "../../components/AddressCard/AddressCard"
 import {Container, Row, Col} from "../../components/Grid/Grid"
 import Geocode from "react-geocode";
 import Api from "../../utils/Api";
@@ -118,7 +118,7 @@ const mapStyles = {
                 <Col size="md-9">
                     <Map
                       google={this.props.google}
-                      zoom={14.35}
+                      zoom={14.15}
                       style={mapStyles}
                       initialCenter={{ lat: 41.879, lng: -87.625}}
                       >

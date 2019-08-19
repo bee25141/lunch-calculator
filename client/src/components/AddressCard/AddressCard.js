@@ -1,5 +1,6 @@
 import React from "react";
 import {Card, CardTitle, CardBody, CardHeader,} from "shards-react"
+import "./style.css"
 
 export default function AddressCard(props) {
 
@@ -8,9 +9,9 @@ export default function AddressCard(props) {
 
             <CardHeader> {props.restaurant} </CardHeader>
 
-            <CardTitle>{props.address}</CardTitle>
+            <CardTitle className="content">{props.address}</CardTitle>
 
-            <CardBody>Average $/ lb: {props.average}</CardBody>
+            <CardBody>Average $/ lb: ${props.average}</CardBody>
 
         </Card>
     )
