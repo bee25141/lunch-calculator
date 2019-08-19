@@ -100,10 +100,9 @@ class BarGraph extends Component {
             .attr('text-anchor', 'middle')
             .text('Average Cost of Meal Per Pound')
 
-        // svg.selectAll('.bar').on('click', function() {
-        //     // console.log(this.__data__.restaurant)
-        //     mapRoute(this.__data__.restaurant)
-        // })
+        svg.selectAll('.bar').on('click', function() {
+            window.location.href = ("/map/" + this.__data__.restaurant)
+        })
 
 
         return el.toReact();
