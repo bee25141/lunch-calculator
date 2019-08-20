@@ -26,15 +26,15 @@ class RestaurantAnalysis extends Component {
 
         return (
               <Container fliuid>
-                  <Row>
+                  {/* // <Row> */}
 
                       
                       <Col size="md-11">
                          <BarGraph data={this.state.restaurantData} />
                       </Col>
                       
-                  </Row>
-              </Container>
+                  {/* // </Row> */}
+            </Container>
 
             );
           };
