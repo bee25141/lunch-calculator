@@ -115,7 +115,7 @@ const mapStyles = {
 
                 </Col>
 
-                <Col size="md-9">
+                <Col size="md-8">
                     <Map
                       google={this.props.google}
                       zoom={14.15}
@@ -125,6 +125,7 @@ const mapStyles = {
                       {this.displayMarkers()}
                     </Map>
                 </Col>
+                <Col size="md-1"></Col>
             </Row>
         </Container>
       );
