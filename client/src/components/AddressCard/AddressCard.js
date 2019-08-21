@@ -7,11 +7,11 @@ export default function AddressCard(props) {
     return (
         <Card>
 
-            <CardHeader> {props.restaurant} </CardHeader>
+            <CardHeader className="content"> {props.restaurant} </CardHeader>
 
             <CardTitle className="content">{props.address}</CardTitle>
 
-            <CardBody>Average $/ lb: ${props.average}</CardBody>
+            <CardBody className="content">Average $/ lb: ${props.average}</CardBody>
 
         </Card>
     )
