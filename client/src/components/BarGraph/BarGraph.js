@@ -19,10 +19,9 @@ class BarGraph extends Component {
     
     drawChart() {
 
-        console.log(this.props.data)
         const margin = 40;
-        const width = 950;
-        const height = 780;
+        const width = 900;
+        const height = 500;
         const el = new Element('div');
         const svg = d3.select(el)
             .append('svg')
@@ -38,7 +37,7 @@ class BarGraph extends Component {
     
         const yScale = d3.scaleLinear()
             .range([height, 0])
-            .domain([0, 10])
+            .domain([0, 12])
     
         const makeYLines = () => d3.axisLeft()
             .scale(yScale)

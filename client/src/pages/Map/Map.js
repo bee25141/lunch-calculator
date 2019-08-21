@@ -11,7 +11,7 @@ const mapStyles = {
     // width: '100%',
     height: '100%',
     width: '100%',
-    height: 450
+    height: 500
   };
 
   class MapContainer extends Component {
@@ -118,9 +118,9 @@ const mapStyles = {
                 <Col size="md-8">
                     <Map
                       google={this.props.google}
-                      zoom={14.15}
+                      zoom={14.25}
                       style={mapStyles}
-                      initialCenter={{ lat: 41.879, lng: -87.625}}
+                      initialCenter={{ lat: 41.882, lng: -87.625}}
                       >
                       {this.displayMarkers()}
                     </Map>
