@@ -20,15 +20,4 @@ router
     .route("/location/:id")
     .get(users.getLocationAnalysis);
 
-// Get request for user to login
-router
-    .route('/api/user/login')
-    .post(user.login);
-
-    
-// Post request for user to logout
-router
-    .route('/api/user/logout')
-    .post(user.logout);
-
 module.exports = router;
