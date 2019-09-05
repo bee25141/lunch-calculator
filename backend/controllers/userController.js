@@ -1,11 +1,16 @@
 const uuidv1 = require('uuid');
 require("dotenv").config();
+let log = require("../models/login");
 
 module.exports = {
+    dud: () => {
+        log.insertNew()
+    },
     login: () => {
-        console.log("sup")
+        log.insertNew();
     },
     logout: () => {
-        console.log("nah")
+        log.logOut()
+        // console.group("logOut huh")
     }
 }
