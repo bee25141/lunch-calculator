@@ -1,13 +1,13 @@
-// let orm = require('./config/orm');
+let orm = require("../../backend/models/orm");
 
 let users = {
     insertNew: function (user, callback) {
-        // user.user_email = user.user_email.toLowerCase();
-        // let query = {
-        //     table: 'users',
-        //     data: user
-        // };
-        // orm.insert(query, callback);
+        user.user_email = user.user_email.toLowerCase();
+        let query = {
+            table: 'users',
+            data: user
+        };
+        orm.insert(query, callback);
         console.log("insertNew")
     },
     // selectByEmail: function (email, callback) {
@@ -70,7 +70,7 @@ let users = {
     logIn: function(user, callback){
         console.log("this is login")
     },
-    
+
     logOut: function(user, callback){
         console.log("this is logout")
     }
