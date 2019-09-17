@@ -16,6 +16,9 @@ export default function NavPills() {
         <NavLink href="/MealInput">Meal Input</NavLink>
       </NavItem>
       <NavItem>
+        <NavLink href="/Create">Create User</NavLink>
+      </NavItem>
+      <NavItem>
         <NavLink disabled href="/LogIn">
           Log In
         </NavLink>

@@ -2,13 +2,14 @@ let orm = require("../../backend/models/orm");
 
 let users = {
     insertNew: function (user, callback) {
-        user.user_email = user.user_email.toLowerCase();
-        let query = {
-            table: 'users',
-            data: user
-        };
-        orm.insert(query, callback);
+        // user.user_email = user.user_email.toLowerCase();
+        // let query = {
+        //     table: 'users',
+        //     data: user
+        // };
+        // orm.insert(query, callback);
         console.log("insertNew")
+        // console.log(console.log(query))
     },
     // selectByEmail: function (email, callback) {
     //     let query = {
