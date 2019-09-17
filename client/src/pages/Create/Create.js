@@ -12,11 +12,12 @@ export default function Create() {
             passwordConfirm:  "",
         });
 
-        const updateUser = event => {
+        const updateUser = (event) => {
 
             setValues({
+                ...user,
                 [event.target.name]: event.target.value 
-            }, callback())
+            });
         }
 
         const createUser = event => {
@@ -27,8 +28,10 @@ export default function Create() {
                 email: user.email,
                 password: user.password
             }
-            
-            console.log(userObject);
+            if (user.password === user.passwordConfirm){
+                console.log(userObject);
+            }
+            else console.log("passwords do not match")
         }
 
         const callback = () => {
@@ -66,7 +69,7 @@ export default function Create() {
                                                 onChange={updateUser} />
                                             </FormGroup>
 
-                                            <Button theme="primary" onClick={(event) => createUser()} >Submit</Button>
+                                            <Button theme="primary" onClick={(event) => createUser(event)} >Submit</Button>
                                     </Form>
                             </Col>
                     </Row>
