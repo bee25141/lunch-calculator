@@ -2,6 +2,8 @@ import axios from "axios";
 
 
 export default {
+
+
     getAllData: function () {
         return axios.get("/api/users/data");
     },
@@ -10,6 +12,7 @@ export default {
       return  axios.get("/api/users/location/" + restaurant)
     },
 
+    
     addLunch: function (lunch) {
         var graphArray = [] 
 
@@ -31,7 +34,7 @@ export default {
     },
 
     createUser: function(user) {
-      console.log("create api")
+      return axios.post("/api/user/create", user)
     }
     
     

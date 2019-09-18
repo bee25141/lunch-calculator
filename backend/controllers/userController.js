@@ -44,7 +44,7 @@ module.exports = {
         //         }
         //     });
         // }
-        console.log("create");
+        console.log("create", request.body);
     },
 
     login: function (request, response) {
