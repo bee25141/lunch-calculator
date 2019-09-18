@@ -35,6 +35,7 @@ export default {
 
     createUser: function(user) {
       return axios.post("/api/user/create", user)
+      // axios.post("/api/user/create", user)
     }
     
     

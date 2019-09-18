@@ -26,12 +26,11 @@ export default function Create() {
             let userObject = {
                 username: user.username,
                 email: user.email,
-                password: user.password
+                password: user.password,
+                password_confirm: user.passwordConfirm
             }
-            if (user.password === user.passwordConfirm){
-                Api.createUser(userObject);
-            }
-            else console.log("passwords do not match")
+            
+            Api.createUser(userObject);
         }
 
         const callback = () => {
