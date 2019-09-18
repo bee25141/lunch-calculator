@@ -6,6 +6,10 @@ export default {
         return axios.get("/api/users/data");
     },
 
+    getLocationData: function(restaurant) {
+      return  axios.get("/api/users/location/" + restaurant)
+    },
+
     addLunch: function (lunch) {
         var graphArray = [] 
 
@@ -26,7 +30,9 @@ export default {
                 
     },
 
-    getLocationData: function(restaurant, cb) {
-      return  axios.get("/api/users/location/" + restaurant)
+    createUser: function(user) {
+      console.log("create api")
     }
+    
+    
 }

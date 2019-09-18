@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Form, FormInput, FormGroup, Button } from "shards-react";
 import {Container, Row, Col} from "../../components/Grid/Grid"
-import {Card, CardBody, CardTitle} from "shards-react";
+import Api from "../../utils/Api"
 
 export default function Create() {
 
@@ -29,7 +29,7 @@ export default function Create() {
                 password: user.password
             }
             if (user.password === user.passwordConfirm){
-                console.log(userObject);
+                Api.createUser(userObject);
             }
             else console.log("passwords do not match")
         }
