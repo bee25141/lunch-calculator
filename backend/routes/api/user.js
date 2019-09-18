@@ -11,16 +11,7 @@ router
     .route('/logout')
     .post(user.logout);
 router
-    .route('/insertNow')
-    .post(user.logout);
-// router
-//     .route('/logout')
-//     .post(user.logout);
-// router
-//     .route('/logout')
-//     .post(user.logout);
-// router
-//     .route('/logout')
-//     .post(user.logout);
+    .route('/create')
+    .post(user.create);
 
 module.exports = router;
