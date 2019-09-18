@@ -1,6 +1,6 @@
 let hashPass = require('hashPass');
 let uuidv1 = require('uuid/v1');
-let log = require("../models/login");
+let log = require("./login");
 require("dotenv").config();
 
 module.exports = {
@@ -25,7 +25,6 @@ module.exports = {
                 user_password: hashedPassword.hash,
                 salt: hashedPassword.salt
             };
-            console.log("user request", userRequest)
             log.insertNew(userRequest, function (error, result) {
                 if (error) {
                     console.log(error);
@@ -49,6 +48,7 @@ module.exports = {
     },
 
     login: function (request, response) {
+
         // log.selectByEmail(request.body.email, function (error, result) {
         //     if (error) {
         //         console.log(error);

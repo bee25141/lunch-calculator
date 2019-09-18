@@ -1,16 +1,24 @@
-let orm = require("../../backend/models/orm");
+let orm = require("../models/orm");
 
 let login = {
-    insertNew: function (user, callback) {
-        console.log("insertNew", user)
-        // user.user_email = user.user_email.toLowerCase();
-        // let query = {
-        //     table: 'users',
-        //     data: user
-        // };
-        // orm.insert(query, callback);
-
-        // console.log(console.log(query))
+    insertNew: function (request, response) {
+        console.log(request);
+        request.user_email = request.user_email.toLowerCase();
+        let query = {
+            table: 'users',
+            column1: 'username',
+            username: request.user_name,
+            column2: 'email',
+            email: request.user_email,
+            column3: 'password',
+            password: request.user_password,
+            column4: 'salt',
+            salt: request.salt
+        };
+        orm.insertUser(query, (error, result) => {
+            if (error) throw error;
+            console.log(result)
+        });
     },
     // selectByEmail: function (email, callback) {
     //     let query = {

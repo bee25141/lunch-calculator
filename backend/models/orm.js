@@ -50,6 +50,20 @@ let orm = {
             callback(result);
         });
     },
+
+    insertUser: (queryObject, callback) => {
+        console.log(queryObject); 
+        let queryString = 'INSERT INTO ?? SET ?? = ?, ?? = ?, ?? = ?, ?? = ?';
+        let searchCriteria = [queryObject.table, queryObject.column1, queryObject.username, queryObject.column2, queryObject.email,
+            queryObject.column3, queryObject.password, queryObject.column4, queryObject.salt
+        ];
+
+        connection.query(queryString, searchCriteria, function(error, result){
+            if (error) throw error;
+            callback(error, result);
+        });
+    }, 
+
     update: (queryObject, callback) => {
         let queryString = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
         let searchCriteria = [queryObject.table, queryObject.column, queryObject.value, queryObject.row, queryObject.id];
