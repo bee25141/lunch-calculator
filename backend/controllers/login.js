@@ -1,7 +1,7 @@
 let orm = require("../models/orm");
 
 let login = {
-    insertNew: function (request, response) {
+    insertNew: function (request, callback) {
         request.user_email = request.user_email.toLowerCase();
         let query = {
             table: 'users',
@@ -16,8 +16,7 @@ let login = {
         };
         orm.insertUser(query, (error, result) => {
             if (error) throw error;
-            console.log("response", response, "result", result)
-            // response.json(result);
+            callback(error, result)
         });
     },
     // selectByEmail: function (email, callback) {

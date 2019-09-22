@@ -30,7 +30,13 @@ export default function Create() {
                 password_confirm: user.passwordConfirm
             }
             
-            Api.createUser(userObject);
+            Api.createUser(userObject)
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
 
         const callback = () => {
