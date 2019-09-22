@@ -31,6 +31,7 @@ class MealInput extends Component {
     addLunch = () => {
         Api.addLunch(this.state);
     }
+    
     // Function that handles form submission
     handleFormSubmit = event => {
         event.preventDefault();

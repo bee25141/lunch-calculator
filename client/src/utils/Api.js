@@ -15,7 +15,6 @@ export default {
     
     addLunch: function (lunch) {
         var graphArray = [] 
-        console.log("lunch", lunch)
 
         // return axios.post("/api/users/lunch", lunch)
         axios.post("/api/users/lunch", lunch)
