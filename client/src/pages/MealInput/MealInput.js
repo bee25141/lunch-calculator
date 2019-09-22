@@ -16,26 +16,27 @@ class MealInput extends Component {
     };
 
 
-
+    // Callback function for checking state values on input change
     callback = () => {
         console.log(this.state);
     }
 
+    // Function for setting state on input change
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({[name]: value});
       };
 
+    // API call to add lunch to db
     addLunch = () => {
         Api.addLunch(this.state);
     }
-
+    // Function that handles form submission
     handleFormSubmit = event => {
         event.preventDefault();
         let analysis = this.state.cost / this.state.weight;
         analysis = analysis.toFixed(2);
         this.setState({analysis: analysis}, this.addLunch);
-        
     }
 
     render() {
