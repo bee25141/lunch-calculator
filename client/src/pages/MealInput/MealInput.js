@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid/Grid";
 import MealInputForm from "../../components/MealInputForm/MealInputForm";
+import Api from "../../utils/Api"
 import "./style.css"
 
 class MealInput extends Component {
@@ -22,16 +23,19 @@ class MealInput extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target;
-        this.setState({[name]: value}, this.callback);
+        this.setState({[name]: value});
       };
 
+    addLunch = () => {
+        Api.addLunch(this.state);
+    }
+
     handleFormSubmit = event => {
-        console.log("disabled for demo day functionality")
-        // event.preventDefault();
-        // let analysis = this.state.cost / this.state.weight;
-        // analysis = analysis.toFixed(2);
-        // this.setState({analysis: analysis}, this.callback);
-        // Api.addLunch(this.state);
+        event.preventDefault();
+        let analysis = this.state.cost / this.state.weight;
+        analysis = analysis.toFixed(2);
+        this.setState({analysis: analysis}, this.addLunch);
+        
     }
 
     render() {

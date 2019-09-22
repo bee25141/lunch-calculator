@@ -15,7 +15,9 @@ export default {
     
     addLunch: function (lunch) {
         var graphArray = [] 
+        console.log("lunch", lunch)
 
+        // return axios.post("/api/users/lunch", lunch)
         axios.post("/api/users/lunch", lunch)
         .then(function (response){
       
@@ -35,7 +37,6 @@ export default {
 
     createUser: function(user) {
       return axios.post("/api/user/create", user)
-      // axios.post("/api/user/create", user)
     }
     
     

@@ -26,6 +26,7 @@ module.exports = {
                 salt: hashedPassword.salt
             };
             log.insertNew(userRequest, function (error, result) {
+                debugger;
                 if (error) {
                     console.log(error);
                     if (error.sqlMessage.includes('Duplicate')) {
@@ -40,15 +41,15 @@ module.exports = {
                         });
                     }
                 } else {
-                    // response.redirect('/login');
-                    console.log("success")
+                    console.log("success!!!!!!!!")
+                    response.redirect('/api/user/login');
                 }
             });
         }
     },
 
     login: function (request, response) {
-
+        console.log("request", request)
         // log.selectByEmail(request.body.email, function (error, result) {
         //     if (error) {
         //         console.log(error);
