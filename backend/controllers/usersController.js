@@ -2,7 +2,7 @@ let orm = require("../models/orm");
 
 module.exports = {
     insertNewLunch: (request, response) => {
-        console.log("request.body", request.body);
+        // console.log("request.body", request.body);
         orm.insert({
                 table: "lunch_data",
                 column1: "analysis",
@@ -18,9 +18,7 @@ module.exports = {
                 column6: "weight",
                 weight: request.body.weight
             }, (error, result) => {
-                if (error) throw error
                 response.json(result);
-                console.log("response", response)
             });
 
         },

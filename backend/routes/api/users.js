@@ -2,7 +2,6 @@ const router = require("express").Router();
 const users = require("../../controllers/usersController")
 
 
-
 //Routes for API calls
 
 // Posting new lunch

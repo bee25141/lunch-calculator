@@ -16,7 +16,7 @@ let login = {
         };
         orm.insertUser(query, (error, result) => {
             if (error) throw error;
-            console.log("response", response)
+            console.log("response", response, "result", result)
             // response.json(result);
         });
     },

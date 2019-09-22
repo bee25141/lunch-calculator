@@ -48,7 +48,7 @@ export default function MealInputForm(props) {
                 onChange={props.handleInputChange} />
               </FormGroup>
 
-              <Button theme="primary" onClick={props.handleFormSubmit} >Submit</Button>
+              <Button theme="primary" type="submit" onClick={props.handleFormSubmit} >Submit</Button>
 
             </Form>
 

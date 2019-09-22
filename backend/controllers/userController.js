@@ -26,7 +26,6 @@ module.exports = {
                 salt: hashedPassword.salt
             };
             log.insertNew(userRequest, function (error, result) {
-                debugger;
                 if (error) {
                     console.log(error);
                     if (error.sqlMessage.includes('Duplicate')) {

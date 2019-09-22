@@ -47,7 +47,7 @@ let orm = {
 
         connection.query(queryString, searchCriteria, function (error, result) {
             if (error) throw error;
-            callback(result);
+            callback(error, result);
         });
     },
 

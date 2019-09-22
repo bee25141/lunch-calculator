@@ -3,7 +3,6 @@ import axios from "axios";
 
 export default {
 
-
     getAllData: function () {
         return axios.get("/api/users/data");
     },
@@ -17,20 +16,20 @@ export default {
         var graphArray = [] 
 
         // return axios.post("/api/users/lunch", lunch)
-        axios.post("/api/users/lunch", lunch)
-        .then(function (response){
+      return axios.post("/api/users/lunch", lunch)
+        // .then(function (response){
       
-            for (var i=0; i < response.data.length; i++){
+        //     for (var i=0; i < response.data.length; i++){
      
-             let graphData = {
-                   restaurant: response.data[i].restaurant,
-                   value: response.data[i].average
-                   };
+        //      let graphData = {
+        //            restaurant: response.data[i].restaurant,
+        //            value: response.data[i].average
+        //            };
      
-             graphArray.push(graphData)
-            }
-            return graphArray
-          })
+        //      graphArray.push(graphData)
+        //     }
+        //     return graphArray
+          // })
                 
     },
 
