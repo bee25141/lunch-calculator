@@ -41,6 +41,7 @@ module.exports = {
                     }
                 } else {
                     console.log("success!!!!!!!!")
+                    // console.log("response", response)
                     response.redirect('/api/user/login');
                 }
             });
@@ -48,7 +49,8 @@ module.exports = {
     },
 
     login: function (request, response) {
-        console.log("request", request)
+        console.log("hitting login")
+        // console.log("request", request)
         // log.selectByEmail(request.body.email, function (error, result) {
         //     if (error) {
         //         console.log(error);

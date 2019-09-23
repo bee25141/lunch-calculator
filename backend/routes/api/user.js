@@ -10,6 +10,8 @@ router
 router
     .route('/logout')
     .post(user.logout);
+
+// Post request for creating new user
 router
     .route('/create')
     .post(user.create);

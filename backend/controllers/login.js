@@ -76,13 +76,13 @@ let login = {
         console.log("get user by id")
     },
 
-    logIn: function(user, callback){
-        console.log("this is login")
-    },
+    // logIn: function(user, callback){
+    //     console.log("this is login")
+    // },
 
-    logOut: function(user, callback){
-        console.log("this is logout")
-    }
+    // logOut: function(user, callback){
+    //     console.log("this is logout")
+    // }
 };
 
 module.exports = login;

@@ -52,7 +52,6 @@ let orm = {
     },
 
     insertUser: (queryObject, callback) => {
-        console.log(queryObject); 
         let queryString = 'INSERT INTO ?? SET ?? = ?, ?? = ?, ?? = ?, ?? = ?';
         let searchCriteria = [queryObject.table, queryObject.column1, queryObject.username, queryObject.column2, queryObject.email,
             queryObject.column3, queryObject.password, queryObject.column4, queryObject.salt
