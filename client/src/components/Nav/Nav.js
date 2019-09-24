@@ -19,14 +19,10 @@ export default function NavPills() {
         <NavLink href="/Create">Create User</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink disabled href="/LogIn">
-          Log In
-        </NavLink>
+        <NavLink href="/LogIn">Log In</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink disabled href="#">
-          Log Out
-        </NavLink>
+        <NavLink href="#">Log Out</NavLink>
       </NavItem>
     </Nav>
   );
