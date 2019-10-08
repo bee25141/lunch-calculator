@@ -3,14 +3,17 @@ const connection = require("./connection");
 let orm = {
 
     select: (queryObject, callback) => {
+        console.log(queryObject)
         let queryString = "SELECT ?? FROM ??";
         let searchCriteria = [queryObject.selection, queryObject.table];
 
-        if (queryObject.value) {
+        if (queryObject) {
             queryString += " WHERE ?? = ?";
             searchCriteria.push(queryObject.column);
             searchCriteria.push(queryObject.value);
         }
+
+        console.log(queryString)
         connection.query(queryString, searchCriteria, function (error, result) {
             if (error) throw error;
             callback(error, result);

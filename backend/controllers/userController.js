@@ -49,38 +49,39 @@ module.exports = {
     },
 
     login: function (request, response) {
-        console.log("hitting login")
+        // console.log("hitting login")
         // console.log("request", request)
-        // log.selectByEmail(request.body.email, function (error, result) {
-        //     if (error) {
-        //         console.log(error);
-        //         response.status(500).json({
-        //             error: 'oops we did something bad'
-        //         });
-        //     } else if (!result.length) {
-        //         response.status(404).json({
-        //             error: 'user not found'
-        //         });
-        //     } else {
-        //         user = result[0];
-        //         loginAttempt = hashPass(request.body.password, user.salt);
-        //         if (loginAttempt.hash === user.user_password) {
-        //             let uuid = uuidv1();
-        //             log.updateSession(user.user_email, uuid, function (error, result) {
-        //                 delete user.user_password;
-        //                 delete user.salt;
-        //                 delete user.session;
+        log.selectByEmail(request.body.email, function (error, result) {
+            console.log("result", result)
+            if (error) {
+                console.log(error);
+                response.status(500).json({
+                    error: 'oops we did something bad'
+                });
+            } else if (!result.length) {
+                response.status(404).json({
+                    error: 'user not found'
+                });
+            } else {
+                user = result[0];
+                loginAttempt = hashPass(request.body.password, user.salt);
+                if (loginAttempt.hash === user.user_password) {
+                    let uuid = uuidv1();
+                    log.updateSession(user.user_email, uuid, function (error, result) {
+                        delete user.user_password;
+                        delete user.salt;
+                        delete user.session;
 
-        //                 response.cookie('x_session_token', uuid);
-        //                 response.redirect('/dashboard');
-        //             });
-        //         } else {
-        //             response.status(401).json({
-        //                 error: 'improper login credentials'
-        //             });
-        //         }
-        //     }
-        // });
+                        response.cookie('x_session_token', uuid);
+                        response.redirect('/dashboard');
+                    });
+                } else {
+                    response.status(401).json({
+                        error: 'improper login credentials'
+                    });
+                }
+            }
+        });
     },
 
     logout: function (request, response) {

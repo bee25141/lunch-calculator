@@ -21,8 +21,8 @@ export default {
       return axios.post("/api/user/create", user)
     },
 
-    login: function(login) {
-      return axios.post("/api/user/login", login)
+    login: function(loginObject) {
+      return axios.post("/api/user/login", loginObject)
     }
     
     

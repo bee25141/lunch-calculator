@@ -8,7 +8,7 @@ let login = {
             column1: 'username',
             username: request.user_name,
             column2: 'email',
-            email: request.user_email,
+            email: request.user_email.toLowerCase(),
             column3: 'password',
             password: request.user_password,
             column4: 'salt',
@@ -19,15 +19,15 @@ let login = {
             callback(error, result)
         });
     },
-    // selectByEmail: function (email, callback) {
-    //     let query = {
-    //         table: 'users',
-    //         where: [{
-    //             user_email: email.toLowerCase()
-    //         }] //Update
-    //     };
-    //     orm.select(query, callback);
-    // },
+    selectByEmail: function (email, callback) {
+        let query = {
+            table: 'users',
+            selection: '*',
+            column: 'email',
+            value: email.toLowerCase(),
+        };
+        orm.select(query, callback);
+    },
     updateSession: function (email, uuid, callback) {
         // let query = {
         //     table: 'users',
@@ -75,14 +75,6 @@ let login = {
         // orm.select(query, callback);
         console.log("get user by id")
     },
-
-    // logIn: function(user, callback){
-    //     console.log("this is login")
-    // },
-
-    // logOut: function(user, callback){
-    //     console.log("this is logout")
-    // }
 };
 
 module.exports = login;

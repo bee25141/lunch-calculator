@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Form, FormInput, FormGroup, Button } from "shards-react";
+import Api from "../../utils/Api"
 import "./style.css";
 
 export default function LogInForm() {
@@ -9,14 +10,13 @@ export default function LogInForm() {
   });
 
   const updateUserLogin = (event) => {
-      // console.log(event.target.name, event.target.password)
 
       setUserLogin({
-        
+
         ...userLogin,
         [event.target.name]: event.target.value
       });
-  }
+  };
 
   const loginSubmit = (event) => {
     event.preventDefault();
@@ -24,8 +24,9 @@ export default function LogInForm() {
       email: userLogin.email,
       password: userLogin.password
     }
-    console.log(loginObject)
-  }
+
+    Api.login(loginObject);
+  };
 
   const callback = () => {
     console.log(userLogin);
