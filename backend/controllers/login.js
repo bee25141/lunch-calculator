@@ -29,17 +29,16 @@ let login = {
         orm.select(query, callback);
     },
     updateSession: function (email, uuid, callback) {
-        // let query = {
-        //     table: 'users',
-        //     data: {
-        //         session: uuid
-        //     },
-        //     where: [{
-        //         user_email: email.toLowerCase()
-        //     }] //Update
-        // };
-        // orm.update(query, callback);
-        console.log("update session")
+        let query = {
+            table: 'users',
+            data: {
+                session: uuid
+            },
+            where: [{
+                user_email: email.toLowerCase()
+            }] //Update
+        };
+        orm.update(query, callback);
     },
     removeSession: function (session, callback) {
         // let query = {

@@ -64,10 +64,11 @@ module.exports = {
                 });
             } else {
                 user = result[0];
+                console.log("user", user)
                 loginAttempt = hashPass(request.body.password, user.salt);
-                if (loginAttempt.hash === user.user_password) {
+                if (loginAttempt.hash === user.password) {
                     let uuid = uuidv1();
-                    log.updateSession(user.user_email, uuid, function (error, result) {
+                    log.updateSession(user.email, uuid, function (error, result) {
                         delete user.user_password;
                         delete user.salt;
                         delete user.session;
