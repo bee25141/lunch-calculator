@@ -22,7 +22,7 @@ export default function NavPills() {
         <NavLink href="/LogIn">Log In</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="#">Log Out</NavLink>
+        <NavLink href="/Logout">Log Out</NavLink>
       </NavItem>
     </Nav>
   );

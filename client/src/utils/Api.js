@@ -23,6 +23,10 @@ export default {
 
     login: function(loginObject) {
       return axios.post("/api/user/login", loginObject)
+    },
+
+    logout: function(user) {
+      return axios.post("api/user/logout", user)
     }
     
     

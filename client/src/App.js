@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import RestaurantAnalysis from "./pages/RestaurantAnalysis/RestaurantAnalysis";
 import MealInput from "./pages/MealInput/MealInput";
 import LogIn from "./pages/LogIn/LogIn";
+import Logout from "./pages/Logout/Logout"
 import Create from "./pages/Create/Create"
 import MapContainer from "./pages/Map/Map"
 import TitleCard from './components/TitleCard/TitleCard';
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/RestaurantAnalysis" component={RestaurantAnalysis} />
         <Route exact path="/MealInput" component={MealInput} />
         <Route exact path="/LogIn" component={LogIn} />
+        <Route exact path="/Logout" component={Logout} />
         <Route exact path="/Create" component={Create} />
       </Switch>
       <Route exact path="/Map/:id" component={MapContainer} />
