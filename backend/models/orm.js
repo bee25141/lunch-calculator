@@ -3,7 +3,7 @@ const connection = require("./connection");
 let orm = {
 
     select: (queryObject, callback) => {
-        console.log(queryObject)
+        console.log("ORM query object", queryObject)
         let queryString = "SELECT ?? FROM ??";
         let searchCriteria = [queryObject.selection, queryObject.table];
 

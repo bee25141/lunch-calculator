@@ -2,7 +2,6 @@ let orm = require("../models/orm");
 
 module.exports = {
     insertNewLunch: (request, response) => {
-        // console.log("request.body", request.body);
         orm.insert({
                 table: "lunch_data",
                 column1: "analysis",
@@ -24,7 +23,6 @@ module.exports = {
         },
 
     selectById: (request, response) => {
-        console.log(request.params)
         orm.select({
             selection: "*",
             table: "lunch_data",
@@ -36,7 +34,6 @@ module.exports = {
     },
 
     getAllAnalysis: (request, response) => {
-        console.log("get all endpoint", request)
         orm.selectAllAverages({
             column1: "restaurant",
             column2: "analysis",
@@ -48,7 +45,6 @@ module.exports = {
     },
 
     getLocationAnalysis: (request, response) => {
-        console.log(request.params);
         orm.selectLocationAverage({
             column1: "location",
             column2: "analysis",

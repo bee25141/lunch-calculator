@@ -52,26 +52,16 @@ let login = {
         // orm.update(query, callback);
         console.log("remove session")
     },
-    // getMyself: function (session, callback) {
-    //     let query = {
-    //         table: 'users',
-    //         columns: ['user_email', 'user_id'],
-    //         where: [{
-    //             session: session
-    //         }]
-    //     };
-    //     orm.select(query, callback);
-    // },
-    getUserByID: function (id, callback) {
-        // let query = {
-        //     table: 'users',
-        //     columns: ['user_email', 'user_id', 'created', 'modified'],
-        //     where: [{
-        //         user_id: id
-        //     }]
-        // };
-        // orm.select(query, callback);
-        console.log("get user by id")
+
+    getUserBySession: function (session, callback) {
+        let query = {
+            table: 'users',
+            selection: ['email', 'userID', 'username', 'session'],
+            column: 'session',
+            value: session
+        };
+        orm.select(query, callback);
+
     },
 };
 

@@ -17,6 +17,10 @@ export default {
 
     },
 
+    getAuthenticatedUser: function (session_token) {
+      return axios.get("/api/user/" + session_token);
+    },
+
     createUser: function(user) {
       return axios.post("/api/user/create", user)
     },

@@ -5,6 +5,12 @@ const user = require("../../controllers/userController")
 router
     .route('/login')
     .post(user.login);
+
+// Get request for info on authenticated user
+router
+    .route("/:session_token")
+    .get(user.getAuthenticatedUser)
+
     
 // Post request for user to logout
 router
