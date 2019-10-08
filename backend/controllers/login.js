@@ -31,13 +31,12 @@ let login = {
     updateSession: function (email, uuid, callback) {
         let query = {
             table: 'users',
-            data: {
-                session: uuid
-            },
-            where: [{
-                user_email: email.toLowerCase()
-            }] //Update
+            column: 'session',
+            value: uuid,
+            row: 'email',
+            id: email
         };
+
         orm.update(query, callback);
     },
     removeSession: function (session, callback) {

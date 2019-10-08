@@ -74,7 +74,7 @@ module.exports = {
                         delete user.session;
 
                         response.cookie('x_session_token', uuid);
-                        response.redirect('/dashboard');
+                        response.redirect('/');
                     });
                 } else {
                     response.status(401).json({
@@ -86,13 +86,13 @@ module.exports = {
     },
 
     logout: function (request, response) {
-        // log.removeSession(request.cookies['x_session_token'], function (
-        //     error,
-        //     result
-        // ) {
-        //     response.clearCookie('x_session_token');
-        //     response.redirect('/');
-        // });
+        log.removeSession(request.cookies['x_session_token'], function (
+            error,
+            result
+        ) {
+            response.clearCookie('x_session_token');
+            response.redirect('/');
+        });
     },
 
     getMyself: function (request, response) {
