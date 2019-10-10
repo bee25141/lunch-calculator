@@ -56,7 +56,7 @@ let login = {
     getUserBySession: function (session, callback) {
         let query = {
             table: 'users',
-            selection: ['email', 'userID', 'username', 'session'],
+            selection: ['email', 'userID', 'username', 'session', 'admin'],
             column: 'session',
             value: session
         };
