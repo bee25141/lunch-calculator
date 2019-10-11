@@ -1,7 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
+import { UserConsumer } from "../../UserContext";
+import NavUser from "./NavUser";
+import NavAdmin from "./NavAdmin";
+import NavGuest from "./NavGuest";
 import { Nav, NavItem, NavLink } from "shards-react";
 
-export default function NavPills() {
+export default function NavMain() {
+
+  const user = useContext(UserConsumer)
+  console.log("user", user)
   return (
     <Nav pills>
       <NavItem>

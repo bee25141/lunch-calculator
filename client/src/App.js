@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NavPills from "./components/Nav/Nav";
+import NavMain from "./components/Nav/Nav";
 import Home from "./pages/Home/Home";
 import RestaurantAnalysis from "./pages/RestaurantAnalysis/RestaurantAnalysis";
 import MealInput from "./pages/MealInput/MealInput";
@@ -26,10 +26,9 @@ class App extends Component {
       Api.getAuthenticatedUser(user_session)
         .then(userObject => {
           this.setState({ user: userObject.data })
-        }, console.log(this.state))
-        console.log("user", this.state)
+        });
     } else {
-      console.log('user not logged in')
+      console.log('user not logged in');
     }
   }
 
@@ -40,7 +39,7 @@ class App extends Component {
             <Router>
               <UserProvider value={this.state.user}>
                 <div>
-                  <NavPills />
+                  <NavMain />
                   <TitleCard />
 
                     <Switch>

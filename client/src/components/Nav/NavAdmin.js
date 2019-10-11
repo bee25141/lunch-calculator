@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav, NavItem, NavLink } from "shards-react";
 
-export default function NavPills() {
+export default function NavAdmin() {
   return (
     <Nav pills>
       <NavItem>

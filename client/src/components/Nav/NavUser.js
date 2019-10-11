@@ -1,7 +1,8 @@
 import React from "react";
+import { UserConsumer } from "../../UserContext";
 import { Nav, NavItem, NavLink } from "shards-react";
 
-export default function NavPills() {
+export default function NavUser() {
   return (
     <Nav pills>
       <NavItem>
