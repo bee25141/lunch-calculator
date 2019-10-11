@@ -9,7 +9,7 @@ class LogIn extends Component {
         return (
             <Container>
                 <Row>
-                    <Col size="md-2"></Col>
+                    <Col size="md-4"></Col>
                     <Col size="md-8">
                     <LogInForm />
                     </Col>

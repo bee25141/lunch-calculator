@@ -3,7 +3,6 @@ import { UserConsumer } from "../../UserContext";
 import NavUser from "./NavUser";
 import NavAdmin from "./NavAdmin";
 import NavGuest from "./NavGuest";
-import { Nav, NavItem, NavLink } from "shards-react";
 
 export default function NavMain() {
 
