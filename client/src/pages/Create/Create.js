@@ -8,7 +8,7 @@ export default function Create() {
         const [user, setValues] = useState({
             username:  "",
             email:  "",
-            admin: null,
+            // admin: null,
             password:  "",
             passwordConfirm:  "",
         });
@@ -26,6 +26,7 @@ export default function Create() {
 
             let userObject = {
                 username: user.username,
+                // admin: user.admin,
                 email: user.email,
                 password: user.password,
                 password_confirm: user.passwordConfirm
@@ -57,23 +58,24 @@ export default function Create() {
                                                 <FormInput id="#email" value={user.email} name="email"
                                                 onChange={updateUser} />
                                             </FormGroup>
-                                            <FormGroup>
+                                            {/* <FormGroup>
                                                 <label htmlFor="#admin">Admin</label>
                                                 <br/>
                                                 <FormRadio
                                                     inline
                                                     name="admin"
-                                                    value={user.admin}
+                                                    value={1}
                                                     checked={user.admin === 1}
                                                     onChange={updateUser}> Yes
                                                 </FormRadio>
                                                 <FormRadio
                                                     inline
                                                     name="admin"
+                                                    value={0}
                                                     checked={user.admin === 0}
                                                     onChange={updateUser}> No
                                                 </FormRadio>
-                                            </FormGroup>
+                                            </FormGroup> */}
                                             <FormGroup>
                                                 <label htmlFor="#password">Password</label>
                                                 <FormInput type="password" id="#password" value={user.password} name="password"
