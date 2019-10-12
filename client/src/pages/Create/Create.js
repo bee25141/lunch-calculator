@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Form, FormInput, FormGroup, Button } from "shards-react";
+import { Form, FormRadio, FormInput, FormGroup, Button } from "shards-react";
 import {Container, Row, Col} from "../../components/Grid/Grid"
 import Api from "../../utils/Api"
 
@@ -8,6 +8,7 @@ export default function Create() {
         const [user, setValues] = useState({
             username:  "",
             email:  "",
+            admin: null,
             password:  "",
             passwordConfirm:  "",
         });
@@ -39,13 +40,6 @@ export default function Create() {
                 })
         }
 
-        const callback = () => {
-            console.log(user.username)
-            console.log(user.email)
-            console.log(user.password)
-            console.log(user.passwordConfirm)
-        }
-
         return (
             <Container>
                     <Row>
@@ -62,6 +56,23 @@ export default function Create() {
                                                 <label htmlFor="#email">Email</label>
                                                 <FormInput id="#email" value={user.email} name="email"
                                                 onChange={updateUser} />
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <label htmlFor="#admin">Admin</label>
+                                                <br/>
+                                                <FormRadio
+                                                    inline
+                                                    name="admin"
+                                                    value={user.admin}
+                                                    checked={user.admin === 1}
+                                                    onChange={updateUser}> Yes
+                                                </FormRadio>
+                                                <FormRadio
+                                                    inline
+                                                    name="admin"
+                                                    checked={user.admin === 0}
+                                                    onChange={updateUser}> No
+                                                </FormRadio>
                                             </FormGroup>
                                             <FormGroup>
                                                 <label htmlFor="#password">Password</label>

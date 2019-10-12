@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const user = require("../../controllers/userController")
 
+// Post request for user to logout
+router
+    .route('/logout')
+    .post(user.logout);
 // Get request for user to login
 router
     .route('/login')
@@ -11,11 +15,6 @@ router
     .route("/:session_token")
     .get(user.getAuthenticatedUser)
 
-    
-// Post request for user to logout
-router
-    .route('/logout')
-    .post(user.logout);
 
 // Post request for creating new user
 router

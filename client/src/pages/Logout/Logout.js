@@ -5,6 +5,17 @@ import Api from "../../utils/Api"
 
 
 export default function Logout() {
+    let user_session = document.cookie.replace(/(?:(?:^|.*;\s*)x_session_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+    const handleLogOut = () => {
+
+    Api.logout(user_session)
+    //  .then(logOutResult => {
+    //      console.log(logOutResult)
+    //     document.cookie = 'x_session_token' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //  })
+
+    };
 
     return (
         <Container>
@@ -13,7 +24,7 @@ export default function Logout() {
                     <Col size="md-8" justify="center">
                         <h3>Are you sure you would like to logout?</h3>
                         <br/>
-                        <Button>Yes</Button>
+                        <Button onClick={handleLogOut}>Yes</Button>
                     </Col>
             </Row>
         </Container>

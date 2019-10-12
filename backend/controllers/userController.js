@@ -81,13 +81,15 @@ module.exports = {
     },
 
     logout: function (request, response) {
-        log.removeSession(request.cookies['x_session_token'], function (
-            error,
-            result
-        ) {
-            response.clearCookie('x_session_token');
-            response.redirect('/');
-        });
+        // log.removeSession(request.cookies['x_session_token'], function (
+        //     error,
+        //     result
+        // ) {
+        //     response.clearCookie('x_session_token');
+        //     response.redirect('/');
+        // });
+
+        console.log(request.headers.cookie)
     },
 
     getAuthenticatedUser: function (request, response) {
