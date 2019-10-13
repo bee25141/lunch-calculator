@@ -18,7 +18,7 @@ let login = {
             if (error) throw error;
             callback(error, result)
         });
-    },x
+    },
     selectByEmail: function (email, callback) {
         let query = {
             table: 'users',
