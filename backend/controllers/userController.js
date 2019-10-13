@@ -6,46 +6,45 @@ require("dotenv").config();
 module.exports = {
 
     create: function (request, response) {
-        console.log(request.body)
-        // if (
-        //     !request.body.email.includes('@') ||
-        //     !request.body.email.includes('.')
-        // ) {
-        //     response.status(400).json({
-        //         error: 'email is not valid'
-        //     });
-        // } else if (request.body.password !== request.body.password_confirm) {
-        //     response.status(400).json({
-        //         error: 'passwords do not match'
-        //     });
-        // } else {
-        //     let hashedPassword = hashPass(request.body.password);
-        //     let userRequest = {
-        //         user_name: request.body.username,
-        //         user_email: request.body.email,
-        //         user_password: hashedPassword.hash,
-        //         salt: hashedPassword.salt
-        //     };
-        //     log.insertNew(userRequest, function (error, result) {
-        //         if (error) {
-        //             if (error.sqlMessage.includes('Duplicate')) {
-        //                 response
-        //                     .status(400)
-        //                     .json({
-        //                         error: 'email already exists in system'
-        //                     });
-        //             } else {
-        //                 response.status(500).json({
-        //                     error: 'oops we did something bad'
-        //                 });
-        //             }
-        //         } else {
+        if (
+            !request.body.email.includes('@') ||
+            !request.body.email.includes('.')
+        ) {
+            response.status(400).json({
+                error: 'email is not valid'
+            });
+        } else if (request.body.password !== request.body.password_confirm) {
+            response.status(400).json({
+                error: 'passwords do not match'
+            });
+        } else {
+            let hashedPassword = hashPass(request.body.password);
+            let userRequest = {
+                user_name: request.body.username,
+                user_email: request.body.email,
+                user_password: hashedPassword.hash,
+                salt: hashedPassword.salt
+            };
+            log.insertNew(userRequest, function (error, result) {
+                if (error) {
+                    if (error.sqlMessage.includes('Duplicate')) {
+                        response
+                            .status(400)
+                            .json({
+                                error: 'email already exists in system'
+                            });
+                    } else {
+                        response.status(500).json({
+                            error: 'oops we did something bad'
+                        });
+                    }
+                } else {
 
-        //             // console.log("response", response)
-        //             response.redirect('/api/user/login');
-        //         }
-        //     });
-        // }
+                    // console.log("response", response)
+                    response.redirect('/api/user/login');
+                }
+            });
+        }
     },
 
     login: function (request, response) {
