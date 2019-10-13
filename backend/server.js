@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3001;
 // Define middleware
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+console.log(process.env);
 
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
