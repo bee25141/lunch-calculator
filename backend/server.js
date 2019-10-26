@@ -10,9 +10,9 @@ app.use(express.json());
 console.log(process.env);
 
 // Serve up static assets
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../client", "build")));
-  }
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname, "../client", "build")));
+//   }
 
 //Importing routes and giving server access to said routes
 app.use(routes);

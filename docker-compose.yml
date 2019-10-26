@@ -7,10 +7,12 @@ services:
       context: ./nginx
     ports:
       - '3050:80'
-  api:
+  backend:
     build:
       # dockerfile: Dockerfile.dev
       context: ./backend
+    ports:
+      - '3001:3001'
     volumes:
       - /app/node_modules
       - ./backend:/app
