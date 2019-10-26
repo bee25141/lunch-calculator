@@ -8,14 +8,10 @@ class BarGraph extends Component {
     constructor(props) {
         super(props);
     
-        this.state = {
-          data: this.props.data,
-        };
+        // this.state = {
+        //   data: this.props.data,
+        // };
       }
-
-    mapRoute(route){
-        console.log(route)
-    }
     
     drawChart() {
 
@@ -105,11 +101,13 @@ class BarGraph extends Component {
 
 
         return el.toReact();
+    
     }
     
     
     render() {
-        return this.drawChart();
+    //    return  <div>{console.log(this.props.data)} </div>
+        return this.drawChart()
     }
 }
 

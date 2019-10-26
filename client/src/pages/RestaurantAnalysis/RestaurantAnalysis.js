@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./style.css"
 import BarGraph from "../../components/BarGraph/BarGraph"
 import {Container, Row, Col} from "../../components/Grid/Grid"
@@ -10,7 +9,6 @@ class RestaurantAnalysis extends Component {
     restaurantData: []
   }
 
-  
 
   callback = () => {
     console.log(this.state);
@@ -18,17 +16,23 @@ class RestaurantAnalysis extends Component {
    componentDidMount () {
      Api.getAllData()
      .then(res => {
-       this.setState({restaurantData: res.data})
+       if (res.status === 200) {
+         console.log(res.data)
+         this.setState({restaurantData: res.data})
+       }
+       else {
+         console.log("no data returned")
+       }
      })
 
    }
+
 	render() {
 
         return (
               <Container fliuid>
                    <Row>
 
-                      
                       <Col size="md-11">
                          <BarGraph data={this.state.restaurantData} />
                       </Col>
