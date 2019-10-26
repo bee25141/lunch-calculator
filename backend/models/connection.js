@@ -17,8 +17,7 @@
       host: "test123.cql2tzwph3cy.us-east-1.rds.amazonaws.com",
       port: 3306,
       user: "test123",
-      password: 'password',
-      // password: process.env.AWS_RDSDB,
+      password: process.env.AWS_RDSDB,
       database: "lunch_box_chi"
   });
 }

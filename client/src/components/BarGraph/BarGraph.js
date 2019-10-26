@@ -7,10 +7,6 @@ import "./style.css"
 class BarGraph extends Component {
     constructor(props) {
         super(props);
-    
-        // this.state = {
-        //   data: this.props.data,
-        // };
       }
     
     drawChart() {
@@ -106,7 +102,7 @@ class BarGraph extends Component {
     
     
     render() {
-    //    return  <div>{console.log(this.props.data)} </div>
+        
         return this.drawChart()
     }
 }

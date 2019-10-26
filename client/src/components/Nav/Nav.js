@@ -11,8 +11,10 @@ export default function NavMain() {
 
   if (user.admin){
     return (<NavAdmin/>)
-  } else if (user){
+  } else if (user.email){
     return (<NavUser/>)
   } else return <NavGuest/> 
+
+  return <NavGuest/>
 
 };
