@@ -16,6 +16,9 @@ export default function NavGuest() {
       <NavItem>
         <NavLink href="/LogIn">Log In</NavLink>
       </NavItem>
+      <NavItem>
+        <NavLink href="/Join">Join</NavLink>
+      </NavItem>
     </Nav>
   );
 }

@@ -7,6 +7,7 @@ import MealInput from "./pages/MealInput/MealInput";
 import LogIn from "./pages/LogIn/LogIn";
 import Logout from "./pages/Logout/Logout"
 import Create from "./pages/Create/Create"
+import Join from "./pages/Join/Join"
 import MapContainer from "./pages/Map/Map"
 import TitleCard from './components/TitleCard/TitleCard';
 import { UserProvider } from './UserContext'
@@ -49,6 +50,7 @@ class App extends Component {
                       <Route exact path="/LogIn" component={LogIn} />
                       <Route exact path="/Logout" component={Logout} />
                       <Route exact path="/Create" component={Create} />
+                      <Route exact path="/Join" component={Join} />
                     </Switch>
                   <Route exact path="/Map/:id" component={MapContainer} />
                 </div>
