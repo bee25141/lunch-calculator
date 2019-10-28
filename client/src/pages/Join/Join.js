@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { FormInput, FormTextarea, Button } from "shards-react";
+import { Form, FormInput, FormTextarea, Button } from "shards-react";
 import {Container, Row, Col} from "../../components/Grid/Grid"
 
 export default function Join() {
@@ -23,6 +23,7 @@ export default function Join() {
     const sendUserRequest = (event) => {
         event.preventDefault();
         console.log(userRequest)
+        window.location.reload();
     }
 
 
@@ -35,6 +36,7 @@ export default function Join() {
                 <h3>Interested in contributing to Lunchbox Chi? Apply with the fields below and we'll 
                     respond with the appropriate credentials.</h3>
                     <br/>
+                <Form>
                 <FormInput placeholder="Name" name={'name'} value={userRequest.name} onChange={updateUserRequest} className="mb-2" />
                 <FormInput placeholder="User Name" name={'userName'} value={userRequest.userName} onChange={updateUserRequest} className="mb-2" />
                 <FormInput placeholder="Email" type="email" name={'email'} value={userRequest.email} 
@@ -44,6 +46,9 @@ export default function Join() {
                 value={userRequest.userBio} onChange={updateUserRequest} />
                 <br/>
                 <Button type="submit" onClick={(event) => sendUserRequest(event)}>Submit</Button>
+                <button type="submit" className="btn btn-primary" onClick={(event) => sendUserRequest(event)}>
+                    Primary</button>
+                </Form>
             </Col>
         </Row>
       </Container>
