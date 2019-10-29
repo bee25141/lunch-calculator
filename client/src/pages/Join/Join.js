@@ -46,8 +46,6 @@ export default function Join() {
                 value={userRequest.userBio} onChange={updateUserRequest} />
                 <br/>
                 <Button type="submit" onClick={(event) => sendUserRequest(event)}>Submit</Button>
-                <button type="submit" className="btn btn-primary" onClick={(event) => sendUserRequest(event)}>
-                    Primary</button>
                 </Form>
             </Col>
         </Row>
