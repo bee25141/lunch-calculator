@@ -44,6 +44,7 @@ class MealInput extends Component {
         let analysis = this.state.cost / this.state.weight;
         analysis = analysis.toFixed(2);
         this.setState({analysis: analysis}, this.addLunch);
+        window.location.reload();
     }
 
     render() {

@@ -9,12 +9,12 @@ export default function NavMain() {
   const user = useContext(UserConsumer)
   console.log("user context", user)
 
-  // if (user.admin){
-  //   return (<NavAdmin/>)
-  // } else if (user.email){
-  //   return (<NavUser/>)
-  // } else return <NavGuest/> 
+  if (user.admin){
+    return (<NavAdmin/>)
+  } else if (user.email){
+    return (<NavUser/>)
+  } else return <NavGuest/> 
 
-  return <NavGuest/>
+  // return <NavGuest/>
 
 };

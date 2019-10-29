@@ -28,6 +28,9 @@ export default function LogInForm() {
     Api.login(loginObject)
     .then(res => {
       console.log (res)
+      if (res.status === 200){
+        window.location.href = ("/")
+      }
     })
     .catch(err => {
       console.log(err)
