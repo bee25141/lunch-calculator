@@ -19,9 +19,6 @@ export default function NavAdmin() {
         <NavLink href="/Create">Create User</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/LogIn">Log In</NavLink>
-      </NavItem>
-      <NavItem>
         <NavLink href="/Logout">Log Out</NavLink>
       </NavItem>
     </Nav>
